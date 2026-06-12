@@ -11,10 +11,10 @@
 - [monotonic-stack.md](monotonic-stack.md)：单调栈
 - [dynamic-programming.md](dynamic-programming.md)：线性 DP
 - [union-find.md](union-find.md)：并查集
+- [linked-list.md](linked-list.md)：链表虚拟头节点、合并、删除、反转
 
 ## 使用建议
 
 - 新题先写“为什么能用这个模板”，再贴代码
 - 每个模板只保留稳定、通用的骨架
 - 题目特化逻辑写在单题笔记里，不塞进模板
-
