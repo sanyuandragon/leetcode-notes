@@ -33,8 +33,10 @@
 
 | 题号 | 标题 | 难度 | 主知识点 | 复习状态 |
 | --- | --- | --- | --- | --- |
+| 1 | [两数之和](problems/0001-two-sum.md) | 简单 | 哈希表 | `new` |
 | 15 | [三数之和](problems/0015-three-sum.md) | 中等 | 双指针 | `new` |
 | 21 | [合并两个有序链表](problems/0021-merge-two-sorted-lists.md) | 简单 | 链表 | `new` |
+| 53 | [最大子数组和](problems/0053-maximum-subarray.md) | 中等 | 动态规划 | `new` |
 | - | - | - | - | - |
 
 复习状态建议：
@@ -53,7 +55,7 @@
 | 二分查找 | [binary-search.md](topics/binary-search.md) | 有序查找、答案二分、边界定位 |
 | 滑动窗口 | [sliding-window.md](topics/sliding-window.md) | 连续子数组、最长/最短窗口 |
 | 单调栈 | [monotonic-stack.md](topics/monotonic-stack.md) | 下一个更大元素、贡献法 |
-| 动态规划 | [dynamic-programming.md](topics/dynamic-programming.md) | 状态定义、转移、初始化 |
+| 动态规划 | [dynamic-programming.md](topics/dynamic-programming.md) | 状态定义、转移、初始化、Kadane |
 | 并查集 | [union-find.md](topics/union-find.md) | 连通性、分组、合并查询 |
 | 链表 | [linked-list.md](topics/linked-list.md) | 虚拟头节点、尾插、反转、快慢指针 |
 

@@ -13,6 +13,36 @@ for (int i = 1; i < n; ++i) {
 return dp[n - 1];
 ```
 
+## 以当前位置结尾的线性 DP
+
+适用：连续子数组或连续子串的最值问题。核心是定义“以 `i` 结尾”的状态。
+
+```cpp
+int bestEndingHere = nums[0];
+int answer = nums[0];
+
+for (int i = 1; i < (int)nums.size(); ++i) {
+    bestEndingHere = max(bestEndingHere + nums[i], nums[i]);
+    answer = max(answer, bestEndingHere);
+}
+
+return answer;
+```
+
+如果像第 53 题那样从 `i = 0` 开始，也可以写成：
+
+```cpp
+int sum = 0;
+int answer = nums[0];
+
+for (int x : nums) {
+    sum = max(sum + x, x);
+    answer = max(answer, sum);
+}
+
+return answer;
+```
+
 ## 二维 DP
 
 ```cpp
@@ -37,4 +67,4 @@ for (int i = 0; i < n; ++i) {
 
 - 不要一上来写转移式，先定义状态
 - 空间优化时，倒序还是正序由依赖关系决定
-
+- 最大子数组和要把答案初始化为数组元素，不能初始化为 `0`

@@ -20,6 +20,18 @@ vector<int> twoSum(vector<int>& nums, int target) {
 }
 ```
 
+如果希望保留某个值第一次出现的下标，可以使用 `insert`：
+
+```cpp
+mp.insert({nums[i], i});
+```
+
+如果希望记录最近一次出现的下标，可以使用赋值：
+
+```cpp
+mp[nums[i]] = i;
+```
+
 ## 频次统计
 
 ```cpp
@@ -33,4 +45,4 @@ for (int x : nums) {
 
 - 判断存在性用 `find`，不要用 `mp[key]`，后者会插入默认值
 - 两数之和这类题通常先查后插，避免当前元素和自己配对
-
+- `insert` 遇到重复 key 不会覆盖旧值，写模板时要明确自己想保留哪个下标
