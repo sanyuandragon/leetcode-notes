@@ -22,6 +22,41 @@ int lowerBound(vector<int>& nums, int target) {
 }
 ```
 
+## 旋转排序数组搜索
+
+适用：数组原本升序、元素互不相同，但被旋转过，需要 O(log n) 搜索目标值。
+
+```cpp
+int search(vector<int>& nums, int target) {
+    int left = 0;
+    int right = (int)nums.size() - 1;
+
+    while (left <= right) {
+        int mid = left + (right - left) / 2;
+
+        if (nums[mid] == target) {
+            return mid;
+        }
+
+        if (nums[left] <= nums[mid]) {
+            if (nums[left] <= target && target <= nums[mid]) {
+                right = mid - 1;
+            } else {
+                left = mid + 1;
+            }
+        } else {
+            if (nums[mid] < target && target <= nums[right]) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+    }
+
+    return -1;
+}
+```
+
 ## 答案二分
 
 找最小可行答案。
@@ -47,4 +82,4 @@ return left;
 - `check(mid)` 必须单调
 - `right` 是否能取到答案要在初始化时确认
 - 每次循环都要缩小区间
-
+- 旋转排序数组中，先判断哪半边有序，再判断 `target` 是否落在有序半边

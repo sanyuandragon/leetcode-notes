@@ -5,6 +5,7 @@
 ## 模板列表
 
 - [hash-table.md](hash-table.md)：哈希查找与计数
+- [string.md](string.md)：回文、中心扩展、字符串双指针
 - [two-pointers.md](two-pointers.md)：双指针
 - [binary-search.md](binary-search.md)：二分边界与答案二分
 - [sliding-window.md](sliding-window.md)：滑动窗口
@@ -12,6 +13,8 @@
 - [dynamic-programming.md](dynamic-programming.md)：线性 DP
 - [union-find.md](union-find.md)：并查集
 - [linked-list.md](linked-list.md)：链表虚拟头节点、合并、删除、反转
+- [binary-tree.md](binary-tree.md)：二叉树 BFS、DFS、递归
+- [graph.md](graph.md)：图论 BFS、DFS、网格连通块
 
 ## 使用建议
 
