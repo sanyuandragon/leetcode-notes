@@ -62,10 +62,32 @@ while (cur != nullptr) {
 return prev;
 ```
 
+## 快慢指针判环
+
+适用：判断链表是否有环。
+
+```cpp
+bool hasCycle(ListNode* head) {
+    ListNode* slow = head;
+    ListNode* fast = head;
+
+    while (fast != nullptr && fast->next != nullptr) {
+        slow = slow->next;
+        fast = fast->next->next;
+
+        if (slow == fast) {
+            return true;
+        }
+    }
+
+    return false;
+}
+```
+
 ## 易错点
 
 - 结果链表头节点不确定时，用 `dummy` 统一处理
 - 尾插一个节点后，`tail` 必须移动到新尾部
 - 改变 `cur->next` 前，如果还要继续遍历，先保存 `next`
 - 刷题里可以用 `new` 创建虚拟头节点；更推荐栈对象 `ListNode dummy(-1)`，不用手动释放
-
+- 快慢指针里访问 `fast->next->next` 前，要先判断 `fast` 和 `fast->next`

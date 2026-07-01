@@ -36,10 +36,14 @@
 | 1 | [两数之和](problems/0001-two-sum.md) | 简单 | 哈希表 | `new` |
 | 5 | [最长回文子串](problems/0005-longest-palindromic-substring.md) | 中等 | 字符串 | `new` |
 | 15 | [三数之和](problems/0015-three-sum.md) | 中等 | 双指针 | `new` |
+| 20 | [有效的括号](problems/0020-valid-parentheses.md) | 简单 | 栈 | `new` |
 | 21 | [合并两个有序链表](problems/0021-merge-two-sorted-lists.md) | 简单 | 链表 | `new` |
 | 33 | [搜索旋转排序数组](problems/0033-search-in-rotated-sorted-array.md) | 中等 | 二分查找 | `new` |
+| 46 | [全排列](problems/0046-permutations.md) | 中等 | 回溯 | `new` |
 | 53 | [最大子数组和](problems/0053-maximum-subarray.md) | 中等 | 动态规划 | `new` |
 | 102 | [二叉树的层序遍历](problems/0102-binary-tree-level-order-traversal.md) | 中等 | 二叉树 | `new` |
+| 121 | [买卖股票的最佳时机](problems/0121-best-time-to-buy-and-sell-stock.md) | 简单 | 贪心 | `new` |
+| 141 | [环形链表](problems/0141-linked-list-cycle.md) | 简单 | 链表 | `new` |
 | 200 | [岛屿数量](problems/0200-number-of-islands.md) | 中等 | 图论 | `new` |
 | - | - | - | - | - |
 
@@ -59,10 +63,13 @@
 | 双指针 | [two-pointers.md](topics/two-pointers.md) | 有序数组、区间收缩、三数之和、快慢指针 |
 | 二分查找 | [binary-search.md](topics/binary-search.md) | 有序查找、旋转数组、答案二分、边界定位 |
 | 滑动窗口 | [sliding-window.md](topics/sliding-window.md) | 连续子数组、最长/最短窗口 |
+| 栈 | [stack.md](topics/stack.md) | 括号匹配、表达式、嵌套结构 |
 | 单调栈 | [monotonic-stack.md](topics/monotonic-stack.md) | 下一个更大元素、贡献法 |
+| 回溯 | [backtracking.md](topics/backtracking.md) | 排列、组合、子集、棋盘搜索 |
 | 动态规划 | [dynamic-programming.md](topics/dynamic-programming.md) | 状态定义、转移、初始化、Kadane |
+| 贪心 | [greedy.md](topics/greedy.md) | 股票、区间、跳跃、前缀最优 |
 | 并查集 | [union-find.md](topics/union-find.md) | 连通性、分组、合并查询 |
-| 链表 | [linked-list.md](topics/linked-list.md) | 虚拟头节点、尾插、反转、快慢指针 |
+| 链表 | [linked-list.md](topics/linked-list.md) | 虚拟头节点、尾插、反转、快慢指针、判环 |
 | 二叉树 | [binary-tree.md](topics/binary-tree.md) | BFS、DFS、层序遍历、递归 |
 | 图论 | [graph.md](topics/graph.md) | BFS、DFS、网格图、连通块 |
 
