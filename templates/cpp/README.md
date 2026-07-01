@@ -14,6 +14,7 @@
 - [backtracking.md](backtracking.md)：回溯、排列、组合、子集
 - [dynamic-programming.md](dynamic-programming.md)：线性 DP
 - [greedy.md](greedy.md)：贪心、股票一次交易、前缀最优
+- [design.md](design.md)：设计题、LRU、哈希表+双向链表
 - [union-find.md](union-find.md)：并查集
 - [linked-list.md](linked-list.md)：链表虚拟头节点、合并、删除、反转
 - [binary-tree.md](binary-tree.md)：二叉树 BFS、DFS、递归

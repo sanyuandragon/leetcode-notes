@@ -6,6 +6,9 @@
 
 | 日期 | 题号 | 标题 | 主知识点 | 下次复盘 |
 | --- | --- | --- | --- | --- |
+| 2026-07-01 | 206 | [反转链表](problems/0206-reverse-linked-list.md) | 链表 | 2026-07-02 |
+| 2026-07-01 | 146 | [LRU 缓存](problems/0146-lru-cache.md) | 设计 | 2026-07-02 |
+| 2026-07-01 | 3 | [无重复字符的最长子串](problems/0003-longest-substring-without-repeating-characters.md) | 滑动窗口 | 2026-07-02 |
 | 2026-07-01 | 46 | [全排列](problems/0046-permutations.md) | 回溯 | 2026-07-02 |
 | 2026-07-01 | 141 | [环形链表](problems/0141-linked-list-cycle.md) | 链表 | 2026-07-02 |
 | 2026-07-01 | 20 | [有效的括号](problems/0020-valid-parentheses.md) | 栈 | 2026-07-02 |
@@ -24,6 +27,9 @@
 
 | 优先级 | 题号 | 标题 | 原因 | 复盘动作 |
 | --- | --- | --- | --- | --- |
+| P2 | 206 | [反转链表](problems/0206-reverse-linked-list.md) | 保存后继、改指针、返回新头的顺序容易写乱 | 默写 `nex = curr->next -> curr->next = prev -> prev = curr -> curr = nex` |
+| P1 | 146 | [LRU 缓存](problems/0146-lru-cache.md) | 哈希表和双向链表同步、哨兵节点指针操作容易错 | 默写 `addToHead/removeNode/removeTail/moveToHead` 四个函数 |
+| P1 | 3 | [无重复字符的最长子串](problems/0003-longest-substring-without-repeating-characters.md) | 左端移除字符、右端边界和窗口长度公式容易混 | 默写 `window`、`right = -1`、左端移除、右端扩张 |
 | P1 | 46 | [全排列](problems/0046-permutations.md) | 回溯状态恢复容易漏，排列和组合模板容易混 | 默写 `path`、`used`、做选择、递归、撤销选择 |
 | P2 | 141 | [环形链表](problems/0141-linked-list-cycle.md) | 快慢指针判空条件和比较节点地址容易漏 | 默写 `fast != nullptr && fast->next != nullptr`，说明为什么有环会相遇 |
 | P2 | 20 | [有效的括号](problems/0020-valid-parentheses.md) | 空栈判断和最后 `st.empty()` 容易漏 | 默写“左括号压期待右括号，右括号匹配栈顶” |
@@ -48,6 +54,9 @@
 
 | 知识点 | 具体问题 | 对应题目 | 修复方式 |
 | --- | --- | --- | --- |
+| 链表 | 反转链表改 `next` 前必须保存后继；循环结束后 `prev` 才是新头 | [206. 反转链表](problems/0206-reverse-linked-list.md) | 默写三指针反转模板，并解释为什么返回 `prev` |
+| 设计 | LRU 需要哈希表负责 O(1) 查找，双向链表负责 O(1) 移动和淘汰；两边状态必须同步 | [146. LRU 缓存](problems/0146-lru-cache.md) | 默写“命中移头、插入加头、超容删尾、map 同步 erase” |
+| 滑动窗口 | 无重复子串要维护窗口字符集合，左端移动时同步删除旧字符，右端尽量扩张 | [3. 无重复字符的最长子串](problems/0003-longest-substring-without-repeating-characters.md) | 默写 `erase(s[left - 1])`、`while !count(s[right + 1])`、长度公式 |
 | 回溯 | 全排列每层从所有未使用元素中选一个，递归后必须恢复 `path` 和 `used` | [46. 全排列](problems/0046-permutations.md) | 默写“选择 -> 递归 -> 撤销选择”，区分排列用 `used`、组合用 `startIndex` |
 | 链表 | 快慢指针判环要比较节点地址；有环时快指针会在环内追上慢指针 | [141. 环形链表](problems/0141-linked-list-cycle.md) | 默写 `slow` 一步、`fast` 两步、相遇返回 true |
 | 栈 | 括号匹配是后进先出，右括号必须匹配最近左括号期待的类型 | [20. 有效的括号](problems/0020-valid-parentheses.md) | 默写 `st.empty()`、`st.top() != c`、`st.pop()` 和最终栈空检查 |

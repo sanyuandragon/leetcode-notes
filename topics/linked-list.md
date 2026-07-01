@@ -22,12 +22,14 @@
 | --- | --- | --- | --- | --- |
 | 21 | [合并两个有序链表](../problems/0021-merge-two-sorted-lists.md) | 简单 | 虚拟头节点 + 尾指针，复用原节点合并两个有序链表 | `new` |
 | 141 | [环形链表](../problems/0141-linked-list-cycle.md) | 简单 | 快慢指针，快指针追上慢指针说明有环 | `new` |
+| 206 | [反转链表](../problems/0206-reverse-linked-list.md) | 简单 | 三指针原地反转，先保存后继再改 `next` | `new` |
 | - | - | - | - | - |
 
 ## 模板
 
 - 合并两个有序链表：见 [linked-list.md](../templates/cpp/linked-list.md)
 - 快慢指针判环：见 [linked-list.md](../templates/cpp/linked-list.md)
+- 反转链表：见 [linked-list.md](../templates/cpp/linked-list.md)
 
 ## 易错点
 
@@ -36,6 +38,7 @@
 - 尾插后尾指针必须前进
 - 链表题要特别检查空链表、单节点链表和剩余链表
 - 快慢指针访问 `fast->next->next` 前，必须先判断 `fast` 和 `fast->next` 非空
+- 反转链表时返回 `prev`，循环结束时 `curr` 已经为空
 
 ## 面试表达
 

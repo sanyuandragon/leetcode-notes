@@ -48,6 +48,8 @@ return dummy.next;
 
 ## 反转链表
 
+适用：整条链表反转、区间反转、K 个一组反转的基础操作。
+
 ```cpp
 ListNode* prev = nullptr;
 ListNode* cur = head;
@@ -91,3 +93,4 @@ bool hasCycle(ListNode* head) {
 - 改变 `cur->next` 前，如果还要继续遍历，先保存 `next`
 - 刷题里可以用 `new` 创建虚拟头节点；更推荐栈对象 `ListNode dummy(-1)`，不用手动释放
 - 快慢指针里访问 `fast->next->next` 前，要先判断 `fast` 和 `fast->next`
+- 反转链表结束时 `cur` 是空，新的头节点是 `prev`
