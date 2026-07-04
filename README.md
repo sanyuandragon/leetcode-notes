@@ -21,6 +21,7 @@
 - `topics/` 中对应知识点索引的更新
 - `templates/cpp/` 中可复用 C++ 模板的补充
 - `review.md` 中的复盘提醒
+- 一份保留原写法、补充中文注释的 C++ 代码
 
 ## 目录
 
@@ -42,6 +43,7 @@
 | 33 | [搜索旋转排序数组](problems/0033-search-in-rotated-sorted-array.md) | 中等 | 二分查找 | `new` |
 | 46 | [全排列](problems/0046-permutations.md) | 中等 | 回溯 | `new` |
 | 53 | [最大子数组和](problems/0053-maximum-subarray.md) | 中等 | 动态规划 | `new` |
+| 92 | [反转链表 II](problems/0092-reverse-linked-list-ii.md) | 中等 | 链表 | `new` |
 | 102 | [二叉树的层序遍历](problems/0102-binary-tree-level-order-traversal.md) | 中等 | 二叉树 | `new` |
 | 121 | [买卖股票的最佳时机](problems/0121-best-time-to-buy-and-sell-stock.md) | 简单 | 贪心 | `new` |
 | 141 | [环形链表](problems/0141-linked-list-cycle.md) | 简单 | 链表 | `new` |
@@ -73,7 +75,7 @@
 | 贪心 | [greedy.md](topics/greedy.md) | 股票、区间、跳跃、前缀最优 |
 | 设计 | [design.md](topics/design.md) | LRU、哈希表+链表、数据结构组合 |
 | 并查集 | [union-find.md](topics/union-find.md) | 连通性、分组、合并查询 |
-| 链表 | [linked-list.md](topics/linked-list.md) | 虚拟头节点、尾插、反转、快慢指针、判环 |
+| 链表 | [linked-list.md](topics/linked-list.md) | 虚拟头节点、尾插、反转、区间反转、快慢指针、判环 |
 | 二叉树 | [binary-tree.md](topics/binary-tree.md) | BFS、DFS、层序遍历、递归 |
 | 图论 | [graph.md](topics/graph.md) | BFS、DFS、网格图、连通块 |
 
@@ -84,7 +86,7 @@
 1. 题目信息
 2. 一眼识别
 3. 解题思路
-4. C++ 代码讲解
+4. C++ 代码讲解：保留你的写法并补中文注释
 5. 复杂度分析
 6. 面试讲法
 7. 模板沉淀

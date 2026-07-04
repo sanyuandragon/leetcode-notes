@@ -13,6 +13,7 @@
 | 2026-07-01 | 141 | [环形链表](problems/0141-linked-list-cycle.md) | 链表 | 2026-07-02 |
 | 2026-07-01 | 20 | [有效的括号](problems/0020-valid-parentheses.md) | 栈 | 2026-07-02 |
 | 2026-07-01 | 121 | [买卖股票的最佳时机](problems/0121-best-time-to-buy-and-sell-stock.md) | 贪心 | 2026-07-02 |
+| 2026-07-04 | 92 | [反转链表 II](problems/0092-reverse-linked-list-ii.md) | 链表 / 区间反转 | 2026-07-05 |
 | 2026-06-30 | 200 | [岛屿数量](problems/0200-number-of-islands.md) | 图论 | 2026-07-01 |
 | 2026-06-30 | 33 | [搜索旋转排序数组](problems/0033-search-in-rotated-sorted-array.md) | 二分查找 | 2026-07-01 |
 | 2026-06-30 | 102 | [二叉树的层序遍历](problems/0102-binary-tree-level-order-traversal.md) | 二叉树 | 2026-07-01 |
@@ -34,6 +35,7 @@
 | P2 | 141 | [环形链表](problems/0141-linked-list-cycle.md) | 快慢指针判空条件和比较节点地址容易漏 | 默写 `fast != nullptr && fast->next != nullptr`，说明为什么有环会相遇 |
 | P2 | 20 | [有效的括号](problems/0020-valid-parentheses.md) | 空栈判断和最后 `st.empty()` 容易漏 | 默写“左括号压期待右括号，右括号匹配栈顶” |
 | P2 | 121 | [买卖股票的最佳时机](problems/0121-best-time-to-buy-and-sell-stock.md) | 容易和多次交易股票题混淆，或忘记不能排序 | 只看题名，复述“每天当卖出日，维护历史最低价” |
+| P1 | 92 | [反转链表 II](problems/0092-reverse-linked-list-ii.md) | 区间前驱、反转后旧头变尾、左右两侧接回顺序容易混 | 默写“定位前驱 -> 反转固定长度 -> 旧头接右侧 -> 前驱接新头” |
 | P1 | 200 | [岛屿数量](problems/0200-number-of-islands.md) | 网格 BFS 的起点标记、入队时标记和四方向边界容易漏 | 默写 `dx/dy`、新岛 `ans++`、BFS 中入队即沉岛 |
 | P1 | 33 | [搜索旋转排序数组](problems/0033-search-in-rotated-sorted-array.md) | 有序半边判断和 target 区间边界容易混 | 默写“先判断哪半边有序，再判断 target 是否在有序半边” |
 | P1 | 102 | [二叉树的层序遍历](problems/0102-binary-tree-level-order-traversal.md) | `size = q.size()` 分层含义容易被写成动态队列长度 | 默写 BFS 模板，解释为什么每层开始要先固定 `size` |
@@ -59,6 +61,7 @@
 | 滑动窗口 | 无重复子串要维护窗口字符集合，左端移动时同步删除旧字符，右端尽量扩张 | [3. 无重复字符的最长子串](problems/0003-longest-substring-without-repeating-characters.md) | 默写 `erase(s[left - 1])`、`while !count(s[right + 1])`、长度公式 |
 | 回溯 | 全排列每层从所有未使用元素中选一个，递归后必须恢复 `path` 和 `used` | [46. 全排列](problems/0046-permutations.md) | 默写“选择 -> 递归 -> 撤销选择”，区分排列用 `used`、组合用 `startIndex` |
 | 链表 | 快慢指针判环要比较节点地址；有环时快指针会在环内追上慢指针 | [141. 环形链表](problems/0141-linked-list-cycle.md) | 默写 `slow` 一步、`fast` 两步、相遇返回 true |
+| 链表 | 区间反转要先找到区间前驱，反转后旧区间头变尾，需要接回右侧和左侧 | [92. 反转链表 II](problems/0092-reverse-linked-list-ii.md) | 默写 `preLeft`、`segmentTail`、`prev`、`cur` 四个指针的含义 |
 | 栈 | 括号匹配是后进先出，右括号必须匹配最近左括号期待的类型 | [20. 有效的括号](problems/0020-valid-parentheses.md) | 默写 `st.empty()`、`st.top() != c`、`st.pop()` 和最终栈空检查 |
 | 贪心 | 一次买卖股票固定卖出日后，最优买入价是此前最低价；不能累加多次利润 | [121. 买卖股票的最佳时机](problems/0121-best-time-to-buy-and-sell-stock.md) | 默写 `minPrice`、`profit`、`maxProfit` 三个变量含义 |
 | 图论 | 网格连通块计数要把格子看成点，四方向相邻看成边；遇到新陆地后 BFS 清理整块 | [200. 岛屿数量](problems/0200-number-of-islands.md) | 默写 `ans++ -> push -> 标记 -> BFS 四方向扩展` |

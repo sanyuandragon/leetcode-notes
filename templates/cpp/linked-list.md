@@ -64,6 +64,43 @@ while (cur != nullptr) {
 return prev;
 ```
 
+## 区间反转链表
+
+适用：只反转链表中的一段，例如第 `left` 到第 `right` 个节点。
+
+```cpp
+ListNode* reverseBetween(ListNode* head, int left, int right) {
+    // 虚拟头节点统一处理 left == 1 时头节点变化的情况
+    ListNode dummy(0);
+    dummy.next = head;
+
+    // preLeft 指向反转区间的前一个节点
+    ListNode* preLeft = &dummy;
+    for (int i = 1; i < left; ++i) {
+        preLeft = preLeft->next;
+    }
+
+    // segmentTail 是原区间头，反转后会变成区间尾
+    ListNode* segmentTail = preLeft->next;
+    ListNode* prev = nullptr;
+    ListNode* cur = segmentTail;
+
+    // 只反转 left 到 right 这一段，共 right - left + 1 个节点
+    for (int i = 0; i < right - left + 1; ++i) {
+        ListNode* next = cur->next;
+        cur->next = prev;
+        prev = cur;
+        cur = next;
+    }
+
+    // prev 是区间新头，cur 是区间右侧第一个节点
+    segmentTail->next = cur;
+    preLeft->next = prev;
+
+    return dummy.next;
+}
+```
+
 ## 快慢指针判环
 
 适用：判断链表是否有环。
@@ -92,5 +129,6 @@ bool hasCycle(ListNode* head) {
 - 尾插一个节点后，`tail` 必须移动到新尾部
 - 改变 `cur->next` 前，如果还要继续遍历，先保存 `next`
 - 刷题里可以用 `new` 创建虚拟头节点；更推荐栈对象 `ListNode dummy(-1)`，不用手动释放
+- 区间反转时先保存原区间头作为反转后的尾节点，方便接回右侧链表
 - 快慢指针里访问 `fast->next->next` 前，要先判断 `fast` 和 `fast->next`
 - 反转链表结束时 `cur` 是空，新的头节点是 `prev`
