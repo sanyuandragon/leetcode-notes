@@ -22,6 +22,7 @@
 - `templates/cpp/` 中可复用 C++ 模板的补充
 - `review.md` 中的复盘提醒
 - 一份保留原写法、补充中文注释的 C++ 代码
+- 如果你明确要求“不要修改代码”，则保留原代码不加注释，讲解写在代码块外
 
 ## 目录
 
@@ -40,6 +41,7 @@
 | 15 | [三数之和](problems/0015-three-sum.md) | 中等 | 双指针 | `new` |
 | 20 | [有效的括号](problems/0020-valid-parentheses.md) | 简单 | 栈 | `new` |
 | 21 | [合并两个有序链表](problems/0021-merge-two-sorted-lists.md) | 简单 | 链表 | `new` |
+| 25 | [K 个一组翻转链表](problems/0025-reverse-nodes-in-k-group.md) | 困难 | 链表 | `new` |
 | 33 | [搜索旋转排序数组](problems/0033-search-in-rotated-sorted-array.md) | 中等 | 二分查找 | `new` |
 | 46 | [全排列](problems/0046-permutations.md) | 中等 | 回溯 | `new` |
 | 53 | [最大子数组和](problems/0053-maximum-subarray.md) | 中等 | 动态规划 | `new` |
@@ -50,6 +52,7 @@
 | 146 | [LRU 缓存](problems/0146-lru-cache.md) | 中等 | 设计 | `new` |
 | 200 | [岛屿数量](problems/0200-number-of-islands.md) | 中等 | 图论 | `new` |
 | 206 | [反转链表](problems/0206-reverse-linked-list.md) | 简单 | 链表 | `new` |
+| 1041 | [困于环中的机器人](problems/1041-robot-bounded-in-circle.md) | 中等 | 模拟 | `new` |
 | - | - | - | - | - |
 
 复习状态建议：
@@ -65,6 +68,7 @@
 | --- | --- | --- |
 | 哈希表 | [hash-table.md](topics/hash-table.md) | 两数之和、分组、计数 |
 | 字符串 | [string.md](topics/string.md) | 回文、子串、前后缀、模式匹配 |
+| 模拟 | [simulation.md](topics/simulation.md) | 方向移动、状态维护、周期判断 |
 | 双指针 | [two-pointers.md](topics/two-pointers.md) | 有序数组、区间收缩、三数之和、快慢指针 |
 | 二分查找 | [binary-search.md](topics/binary-search.md) | 有序查找、旋转数组、答案二分、边界定位 |
 | 滑动窗口 | [sliding-window.md](topics/sliding-window.md) | 连续子数组/子串、最长/最短窗口、去重 |
@@ -75,7 +79,7 @@
 | 贪心 | [greedy.md](topics/greedy.md) | 股票、区间、跳跃、前缀最优 |
 | 设计 | [design.md](topics/design.md) | LRU、哈希表+链表、数据结构组合 |
 | 并查集 | [union-find.md](topics/union-find.md) | 连通性、分组、合并查询 |
-| 链表 | [linked-list.md](topics/linked-list.md) | 虚拟头节点、尾插、反转、区间反转、快慢指针、判环 |
+| 链表 | [linked-list.md](topics/linked-list.md) | 虚拟头节点、尾插、反转、区间反转、K 组反转、快慢指针、判环 |
 | 二叉树 | [binary-tree.md](topics/binary-tree.md) | BFS、DFS、层序遍历、递归 |
 | 图论 | [graph.md](topics/graph.md) | BFS、DFS、网格图、连通块 |
 
@@ -86,7 +90,7 @@
 1. 题目信息
 2. 一眼识别
 3. 解题思路
-4. C++ 代码讲解：保留你的写法并补中文注释
+4. C++ 代码讲解：默认保留你的写法并补中文注释；若你要求不改代码，则原样保留并在代码块外讲解
 5. 复杂度分析
 6. 面试讲法
 7. 模板沉淀

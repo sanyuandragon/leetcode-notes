@@ -16,12 +16,14 @@
 - 快慢指针：找中点、判断环、寻找倒数第 k 个节点
 - 三指针反转：`prev`、`cur`、`next` 依次改边
 - 区间反转：先找到区间前驱，反转固定长度，再接回左右两侧
+- K 组反转：每次确认剩余节点够 `k` 个，再做长度为 `k` 的区间反转
 
 ## 题目列表
 
 | 题号 | 标题 | 难度 | 关键点 | 状态 |
 | --- | --- | --- | --- | --- |
 | 21 | [合并两个有序链表](../problems/0021-merge-two-sorted-lists.md) | 简单 | 虚拟头节点 + 尾指针，复用原节点合并两个有序链表 | `new` |
+| 25 | [K 个一组翻转链表](../problems/0025-reverse-nodes-in-k-group.md) | 困难 | 每组确认够 `k` 个节点，再做固定长度局部反转并接回链表 | `new` |
 | 92 | [反转链表 II](../problems/0092-reverse-linked-list-ii.md) | 中等 | 虚拟头节点定位区间前驱，局部反转后重新接回链表 | `new` |
 | 141 | [环形链表](../problems/0141-linked-list-cycle.md) | 简单 | 快慢指针，快指针追上慢指针说明有环 | `new` |
 | 206 | [反转链表](../problems/0206-reverse-linked-list.md) | 简单 | 三指针原地反转，先保存后继再改 `next` | `new` |
@@ -33,6 +35,7 @@
 - 快慢指针判环：见 [linked-list.md](../templates/cpp/linked-list.md)
 - 反转链表：见 [linked-list.md](../templates/cpp/linked-list.md)
 - 区间反转链表：见 [linked-list.md](../templates/cpp/linked-list.md)
+- K 个一组反转链表：见 [linked-list.md](../templates/cpp/linked-list.md)
 
 ## 易错点
 
@@ -43,6 +46,7 @@
 - 快慢指针访问 `fast->next->next` 前，必须先判断 `fast` 和 `fast->next` 非空
 - 反转链表时返回 `prev`，循环结束时 `curr` 已经为空
 - 区间反转时，原区间头反转后会变成区间尾，要接回右侧链表
+- K 组反转时，不足 `k` 个的尾部节点不能反转
 
 ## 面试表达
 

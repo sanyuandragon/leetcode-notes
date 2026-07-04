@@ -101,6 +101,48 @@ ListNode* reverseBetween(ListNode* head, int left, int right) {
 }
 ```
 
+## K 个一组反转链表
+
+适用：每 `k` 个节点一组反转，不足 `k` 个的尾部节点保持原顺序。
+
+```cpp
+ListNode* reverseKGroup(ListNode* head, int k) {
+    ListNode dummy(0);
+    dummy.next = head;
+
+    int n = 0;
+    for (ListNode* p = head; p != nullptr; p = p->next) {
+        ++n;
+    }
+
+    ListNode* preLeft = &dummy;
+    ListNode* cur = head;
+
+    while (n >= k) {
+        // 当前组旧头，反转后会变成当前组尾
+        ListNode* groupTail = cur;
+        ListNode* prev = nullptr;
+
+        // 只反转当前组的 k 个节点
+        for (int i = 0; i < k; ++i) {
+            ListNode* next = cur->next;
+            cur->next = prev;
+            prev = cur;
+            cur = next;
+        }
+
+        // prev 是当前组新头，cur 是下一组开头
+        groupTail->next = cur;
+        preLeft->next = prev;
+        preLeft = groupTail;
+
+        n -= k;
+    }
+
+    return dummy.next;
+}
+```
+
 ## 快慢指针判环
 
 适用：判断链表是否有环。
@@ -130,5 +172,6 @@ bool hasCycle(ListNode* head) {
 - 改变 `cur->next` 前，如果还要继续遍历，先保存 `next`
 - 刷题里可以用 `new` 创建虚拟头节点；更推荐栈对象 `ListNode dummy(-1)`，不用手动释放
 - 区间反转时先保存原区间头作为反转后的尾节点，方便接回右侧链表
+- K 组反转前必须先确认剩余节点不少于 `k` 个，不足一组时保持原顺序
 - 快慢指针里访问 `fast->next->next` 前，要先判断 `fast` 和 `fast->next`
 - 反转链表结束时 `cur` 是空，新的头节点是 `prev`

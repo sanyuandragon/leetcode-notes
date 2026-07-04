@@ -6,6 +6,7 @@
 
 - [hash-table.md](hash-table.md)：哈希查找与计数
 - [string.md](string.md)：回文、中心扩展、字符串双指针
+- [simulation.md](simulation.md)：方向模拟、状态维护、周期判断
 - [two-pointers.md](two-pointers.md)：双指针
 - [binary-search.md](binary-search.md)：二分边界与答案二分
 - [sliding-window.md](sliding-window.md)：滑动窗口
