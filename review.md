@@ -16,6 +16,9 @@
 | 2026-07-04 | 25 | [K 个一组翻转链表](problems/0025-reverse-nodes-in-k-group.md) | 链表 / K 组反转 | 2026-07-05 |
 | 2026-07-04 | 92 | [反转链表 II](problems/0092-reverse-linked-list-ii.md) | 链表 / 区间反转 | 2026-07-05 |
 | 2026-07-04 | 1041 | [困于环中的机器人](problems/1041-robot-bounded-in-circle.md) | 模拟 | 2026-07-05 |
+| 2026-07-05 | 236 | [二叉树的最近公共祖先](problems/0236-lowest-common-ancestor-of-a-binary-tree.md) | 二叉树 / 最近公共祖先 | 2026-07-06 |
+| 2026-07-06 | 160 | [相交链表](problems/0160-intersection-of-two-linked-lists.md) | 链表 / 双指针 | 2026-07-07 |
+| 2026-07-06 | 23 | [合并 K 个升序链表](problems/0023-merge-k-sorted-lists.md) | 链表 / 分治归并 | 2026-07-07 |
 | 2026-06-30 | 200 | [岛屿数量](problems/0200-number-of-islands.md) | 图论 | 2026-07-01 |
 | 2026-06-30 | 33 | [搜索旋转排序数组](problems/0033-search-in-rotated-sorted-array.md) | 二分查找 | 2026-07-01 |
 | 2026-06-30 | 102 | [二叉树的层序遍历](problems/0102-binary-tree-level-order-traversal.md) | 二叉树 | 2026-07-01 |
@@ -40,6 +43,9 @@
 | P1 | 25 | [K 个一组翻转链表](problems/0025-reverse-nodes-in-k-group.md) | 每组反转后的四段连接容易混，尤其是不足 `k` 个不能反转 | 默写“确认够 k 个 -> 反转 k 个 -> 组尾接下一段 -> 前驱接新头” |
 | P1 | 92 | [反转链表 II](problems/0092-reverse-linked-list-ii.md) | 区间前驱、反转后旧头变尾、左右两侧接回顺序容易混 | 默写“定位前驱 -> 反转固定长度 -> 旧头接右侧 -> 前驱接新头” |
 | P1 | 1041 | [困于环中的机器人](problems/1041-robot-bounded-in-circle.md) | 容易只判断回到原点，漏掉一轮后方向改变也会有界 | 默写“回原点或方向改变即有界”，检查左转取模 |
+| P1 | 236 | [二叉树的最近公共祖先](problems/0236-lowest-common-ancestor-of-a-binary-tree.md) | 递归返回值含义容易模糊，尤其是遇到 `p/q` 直接返回和左右都非空返回当前节点 | 默写“空或命中返回 root，左右都非空返回 root，否则返回非空侧” |
+| P1 | 160 | [相交链表](problems/0160-intersection-of-two-linked-lists.md) | 容易把节点值相等当成相交，或忘记两个指针走到空后要切换链表头 | 默写“p 走 A+B，q 走 B+A，在交点或空处相遇” |
+| P1 | 23 | [合并 K 个升序链表](problems/0023-merge-k-sorted-lists.md) | 分治合并的 `step` 和内层下标边界容易写错 | 默写“先合并两个链表，再 `step *= 2` 两两归并” |
 | P1 | 200 | [岛屿数量](problems/0200-number-of-islands.md) | 网格 BFS 的起点标记、入队时标记和四方向边界容易漏 | 默写 `dx/dy`、新岛 `ans++`、BFS 中入队即沉岛 |
 | P1 | 33 | [搜索旋转排序数组](problems/0033-search-in-rotated-sorted-array.md) | 有序半边判断和 target 区间边界容易混 | 默写“先判断哪半边有序，再判断 target 是否在有序半边” |
 | P1 | 102 | [二叉树的层序遍历](problems/0102-binary-tree-level-order-traversal.md) | `size = q.size()` 分层含义容易被写成动态队列长度 | 默写 BFS 模板，解释为什么每层开始要先固定 `size` |
@@ -65,6 +71,8 @@
 | 滑动窗口 | 无重复子串要维护窗口字符集合，左端移动时同步删除旧字符，右端尽量扩张 | [3. 无重复字符的最长子串](problems/0003-longest-substring-without-repeating-characters.md) | 默写 `erase(s[left - 1])`、`while !count(s[right + 1])`、长度公式 |
 | 回溯 | 全排列每层从所有未使用元素中选一个，递归后必须恢复 `path` 和 `used` | [46. 全排列](problems/0046-permutations.md) | 默写“选择 -> 递归 -> 撤销选择”，区分排列用 `used`、组合用 `startIndex` |
 | 链表 | 快慢指针判环要比较节点地址；有环时快指针会在环内追上慢指针 | [141. 环形链表](problems/0141-linked-list-cycle.md) | 默写 `slow` 一步、`fast` 两步、相遇返回 true |
+| 链表 | 相交链表需要比较节点地址，并用两个指针切换链表头来抵消长度差 | [160. 相交链表](problems/0160-intersection-of-two-linked-lists.md) | 默写 `p = p ? p->next : headB` 和 `q = q ? q->next : headA` |
+| 链表 | 合并 K 个升序链表可以复用合并两个链表模板，再用分治减少重复扫描 | [23. 合并 K 个升序链表](problems/0023-merge-k-sorted-lists.md) | 默写 `step = 1, 2, 4...` 和 `i += step * 2` |
 | 链表 | K 个一组反转是重复做固定长度区间反转，关键是确认够 `k` 个以及反转后接回四个位置 | [25. K 个一组翻转链表](problems/0025-reverse-nodes-in-k-group.md) | 默写 `preLeft`、`pre/prev`、`cur`、`groupTail/tmp` 的含义 |
 | 链表 | 区间反转要先找到区间前驱，反转后旧区间头变尾，需要接回右侧和左侧 | [92. 反转链表 II](problems/0092-reverse-linked-list-ii.md) | 默写 `preLeft`、`segmentTail`、`prev`、`cur` 四个指针的含义 |
 | 栈 | 括号匹配是后进先出，右括号必须匹配最近左括号期待的类型 | [20. 有效的括号](problems/0020-valid-parentheses.md) | 默写 `st.empty()`、`st.top() != c`、`st.pop()` 和最终栈空检查 |
@@ -72,6 +80,7 @@
 | 图论 | 网格连通块计数要把格子看成点，四方向相邻看成边；遇到新陆地后 BFS 清理整块 | [200. 岛屿数量](problems/0200-number-of-islands.md) | 默写 `ans++ -> push -> 标记 -> BFS 四方向扩展` |
 | 模拟 | 重复执行指令时，不要无限模拟；看一轮后的坐标和方向是否产生周期 | [1041. 困于环中的机器人](problems/1041-robot-bounded-in-circle.md) | 默写 `dir`、`dx/dy`、左转 `(dir + 3) % 4`、返回条件 |
 | 二分查找 | 旋转数组整体不单调，但每轮至少一半有序；先定位有序半边再缩小区间 | [33. 搜索旋转排序数组](problems/0033-search-in-rotated-sorted-array.md) | 默写 `nums[left] <= nums[mid]` 和左右区间判断条件 |
+| 二叉树 | 最近公共祖先要定义好递归返回值：当前子树里找到的目标节点或已经确定的答案 | [236. 二叉树的最近公共祖先](problems/0236-lowest-common-ancestor-of-a-binary-tree.md) | 默写 `root == p/q`、递归左右、`left && right` 返回当前节点 |
 | 二叉树 | 层序遍历按层输出时，要用队列 BFS，并在每层开始固定当前层节点数 | [102. 二叉树的层序遍历](problems/0102-binary-tree-level-order-traversal.md) | 默写 `while (!q.empty()) -> size -> for size 次 -> 入队孩子` |
 | 字符串 | 回文子串要同时处理奇数中心和偶数中心，扩展停止后边界已经多走一步 | [5. 最长回文子串](problems/0005-longest-palindromic-substring.md) | 默写中心扩展模板，并解释 `start = left + 1` |
 | 哈希表 | 用值到下标的映射把查找补数降到均摊 O(1)，并保持先查后插 | [1. 两数之和](problems/0001-two-sum.md) | 默写 `need`、`find`、`return {mp[need], i}`、插入当前数 |

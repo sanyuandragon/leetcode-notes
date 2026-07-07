@@ -25,6 +25,27 @@ ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
 }
 ```
 
+## 分治合并 K 个升序链表
+
+适用：多个升序链表合并成一个升序链表。先复用合并两个链表，再按 `step` 翻倍两两合并。
+
+```cpp
+ListNode* mergeKLists(vector<ListNode*>& lists) {
+    int m = lists.size();
+    if (m == 0) {
+        return nullptr;
+    }
+
+    for (int step = 1; step < m; step *= 2) {
+        for (int i = 0; i < m - step; i += step * 2) {
+            lists[i] = mergeTwoLists(lists[i], lists[i + step]);
+        }
+    }
+
+    return lists[0];
+}
+```
+
 ## 虚拟头节点删除节点
 
 适用：删除链表节点，尤其是头节点也可能被删除的情况。
@@ -165,13 +186,35 @@ bool hasCycle(ListNode* head) {
 }
 ```
 
+## 相交链表双指针
+
+适用：找两个单链表的第一个相交节点，要求 O(1) 额外空间且不能修改链表结构。
+
+```cpp
+ListNode* getIntersectionNode(ListNode* headA, ListNode* headB) {
+    ListNode* p = headA;
+    ListNode* q = headB;
+
+    while (p != q) {
+        p = p != nullptr ? p->next : headB;
+        q = q != nullptr ? q->next : headA;
+    }
+
+    return p;
+}
+```
+
 ## 易错点
 
 - 结果链表头节点不确定时，用 `dummy` 统一处理
 - 尾插一个节点后，`tail` 必须移动到新尾部
+- 合并 K 个链表时，`step` 每轮翻倍，内层下标每次跳 `step * 2`
+- `lists` 为空时直接返回 `nullptr`
 - 改变 `cur->next` 前，如果还要继续遍历，先保存 `next`
 - 刷题里可以用 `new` 创建虚拟头节点；更推荐栈对象 `ListNode dummy(-1)`，不用手动释放
 - 区间反转时先保存原区间头作为反转后的尾节点，方便接回右侧链表
 - K 组反转前必须先确认剩余节点不少于 `k` 个，不足一组时保持原顺序
 - 快慢指针里访问 `fast->next->next` 前，要先判断 `fast` 和 `fast->next`
+- 相交链表要比较节点地址，不能比较节点值
+- 相交链表中两个指针走到 `nullptr` 后才切换到另一个链表头
 - 反转链表结束时 `cur` 是空，新的头节点是 `prev`

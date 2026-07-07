@@ -65,10 +65,32 @@ int height(TreeNode* root) {
 }
 ```
 
+## 最近公共祖先
+
+适用：普通二叉树中查找两个节点的最近公共祖先，且题目保证两个节点都存在。
+
+```cpp
+TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+    if (root == nullptr || root == p || root == q) {
+        return root;
+    }
+
+    TreeNode* left = lowestCommonAncestor(root->left, p, q);
+    TreeNode* right = lowestCommonAncestor(root->right, p, q);
+
+    if (left != nullptr && right != nullptr) {
+        return root;
+    }
+
+    return left != nullptr ? left : right;
+}
+```
+
 ## 易错点
 
 - 层序遍历每层开始先保存 `size = q.size()`，不要让新入队的孩子影响当前层循环
 - 空树要先返回，不要把 `nullptr` 推进队列
 - 需要从右到左时，调整孩子入队顺序或输出顺序
 - DFS 递归先写空节点出口，再写当前节点和左右子树逻辑
-
+- 最近公共祖先里，`root == p || root == q` 是递归出口，因为节点可以是自己的祖先
+- 普通二叉树 LCA 不能用节点值大小判断方向，那是二叉搜索树的做法
