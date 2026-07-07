@@ -67,6 +67,59 @@ while (cur != nullptr) {
 return dummy.next;
 ```
 
+## 删除链表倒数第 N 个节点
+
+适用：删除倒数位置的节点，要求返回新的头节点。
+
+先求长度：
+
+```cpp
+ListNode* removeNthFromEnd(ListNode* head, int n) {
+    ListNode dummy(0, head);
+    int length = 0;
+
+    for (ListNode* p = head; p != nullptr; p = p->next) {
+        ++length;
+    }
+
+    ListNode* prev = &dummy;
+    for (int i = 0; i < length - n; ++i) {
+        prev = prev->next;
+    }
+
+    ListNode* deleted = prev->next;
+    prev->next = prev->next->next;
+    delete deleted;
+
+    return dummy.next;
+}
+```
+
+快慢指针一趟扫描：
+
+```cpp
+ListNode* removeNthFromEnd(ListNode* head, int n) {
+    ListNode dummy(0, head);
+    ListNode* first = head;
+    ListNode* second = &dummy;
+
+    for (int i = 0; i < n; ++i) {
+        first = first->next;
+    }
+
+    while (first != nullptr) {
+        first = first->next;
+        second = second->next;
+    }
+
+    ListNode* deleted = second->next;
+    second->next = second->next->next;
+    delete deleted;
+
+    return dummy.next;
+}
+```
+
 ## 反转链表
 
 适用：整条链表反转、区间反转、K 个一组反转的基础操作。
@@ -186,6 +239,53 @@ bool hasCycle(ListNode* head) {
 }
 ```
 
+## 环形链表 II：找入环点
+
+适用：返回链表开始入环的第一个节点。
+
+哈希表写法直观：
+
+```cpp
+ListNode* detectCycle(ListNode* head) {
+    unordered_set<ListNode*> visited;
+
+    while (head != nullptr) {
+        if (visited.count(head)) {
+            return head;
+        }
+        visited.insert(head);
+        head = head->next;
+    }
+
+    return nullptr;
+}
+```
+
+O(1) 空间写法：
+
+```cpp
+ListNode* detectCycle(ListNode* head) {
+    ListNode* slow = head;
+    ListNode* fast = head;
+
+    while (fast != nullptr && fast->next != nullptr) {
+        slow = slow->next;
+        fast = fast->next->next;
+
+        if (slow == fast) {
+            ListNode* p = head;
+            while (p != slow) {
+                p = p->next;
+                slow = slow->next;
+            }
+            return p;
+        }
+    }
+
+    return nullptr;
+}
+```
+
 ## 相交链表双指针
 
 适用：找两个单链表的第一个相交节点，要求 O(1) 额外空间且不能修改链表结构。
@@ -211,10 +311,13 @@ ListNode* getIntersectionNode(ListNode* headA, ListNode* headB) {
 - 合并 K 个链表时，`step` 每轮翻倍，内层下标每次跳 `step * 2`
 - `lists` 为空时直接返回 `nullptr`
 - 改变 `cur->next` 前，如果还要继续遍历，先保存 `next`
+- 删除链表节点时，要先找到待删除节点的前驱
+- 删除倒数第 N 个节点时，快慢指针法中慢指针从虚拟头节点出发
 - 刷题里可以用 `new` 创建虚拟头节点；更推荐栈对象 `ListNode dummy(-1)`，不用手动释放
 - 区间反转时先保存原区间头作为反转后的尾节点，方便接回右侧链表
 - K 组反转前必须先确认剩余节点不少于 `k` 个，不足一组时保持原顺序
 - 快慢指针里访问 `fast->next->next` 前，要先判断 `fast` 和 `fast->next`
+- 找入环点时，相遇点不一定是入口；要让一个指针回到 `head` 后同步走
 - 相交链表要比较节点地址，不能比较节点值
 - 相交链表中两个指针走到 `nullptr` 后才切换到另一个链表头
 - 反转链表结束时 `cur` 是空，新的头节点是 `prev`

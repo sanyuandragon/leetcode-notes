@@ -55,6 +55,29 @@ for (int i = 0; i < n; ++i) {
 }
 ```
 
+## 最长递增子序列 DP
+
+适用：求最长严格递增子序列长度，O(n^2) 写法清晰，适合先讲状态定义。
+
+```cpp
+int lengthOfLIS(vector<int>& nums) {
+    int n = nums.size();
+    vector<int> dp(n, 1);
+    int ans = 1;
+
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < i; ++j) {
+            if (nums[j] < nums[i]) {
+                dp[i] = max(dp[i], dp[j] + 1);
+            }
+        }
+        ans = max(ans, dp[i]);
+    }
+
+    return ans;
+}
+```
+
 ## 面试检查顺序
 
 1. `dp` 的含义是什么
@@ -68,3 +91,4 @@ for (int i = 0; i < n; ++i) {
 - 不要一上来写转移式，先定义状态
 - 空间优化时，倒序还是正序由依赖关系决定
 - 最大子数组和要把答案初始化为数组元素，不能初始化为 `0`
+- LIS 的 DP 答案是所有 `dp[i]` 的最大值，不一定是 `dp[n - 1]`

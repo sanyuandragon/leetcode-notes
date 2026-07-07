@@ -65,6 +65,34 @@ int height(TreeNode* root) {
 }
 ```
 
+## 二叉树最大路径和
+
+适用：树上路径可以从任意节点开始和结束，要求最大路径和。
+
+```cpp
+class Solution {
+public:
+    int ans = INT_MIN;
+
+    int dfs(TreeNode* node) {
+        if (node == nullptr) {
+            return 0;
+        }
+
+        int left = dfs(node->left);
+        int right = dfs(node->right);
+
+        ans = max(ans, left + right + node->val);
+        return max(max(left, right) + node->val, 0);
+    }
+
+    int maxPathSum(TreeNode* root) {
+        dfs(root);
+        return ans;
+    }
+};
+```
+
 ## 最近公共祖先
 
 适用：普通二叉树中查找两个节点的最近公共祖先，且题目保证两个节点都存在。
@@ -92,5 +120,7 @@ TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
 - 空树要先返回，不要把 `nullptr` 推进队列
 - 需要从右到左时，调整孩子入队顺序或输出顺序
 - DFS 递归先写空节点出口，再写当前节点和左右子树逻辑
+- 最大路径和里，返回给父节点的只能是单边贡献，更新全局答案时才能左右都用
+- 最大路径和的 `ans` 要初始化为 `INT_MIN`，避免全负数树返回 0
 - 最近公共祖先里，`root == p || root == q` 是递归出口，因为节点可以是自己的祖先
 - 普通二叉树 LCA 不能用节点值大小判断方向，那是二叉搜索树的做法
