@@ -22,11 +22,15 @@
 | --- | --- | --- | --- | --- |
 | 3 | [无重复字符的最长子串](../problems/0003-longest-substring-without-repeating-characters.md) | 中等 | 滑动窗口维护不含重复字符的连续子串 | `new` |
 | 5 | [最长回文子串](../problems/0005-longest-palindromic-substring.md) | 中等 | 枚举奇偶中心，向两边扩展并记录最长区间 | `new` |
+| 72 | [编辑距离](../problems/0072-edit-distance.md) | 中等 | 二维 DP 处理两个字符串前缀之间的插入、删除、替换 | `new` |
+| 1143 | [最长公共子序列](../problems/1143-longest-common-subsequence.md) | 中等 | 二维 DP 处理两个字符串前缀的最长公共子序列长度 | `new` |
 | - | - | - | - | - |
 
 ## 模板
 
 - 中心扩展求回文串：见 [string.md](../templates/cpp/string.md)
+- 编辑距离：见 [dynamic-programming.md](../templates/cpp/dynamic-programming.md)
+- 最长公共子序列：见 [dynamic-programming.md](../templates/cpp/dynamic-programming.md)
 
 ## 易错点
 
@@ -34,6 +38,8 @@
 - 回文串既可能是奇数长度，也可能是偶数长度
 - 双指针访问字符前要先判断边界
 - 扩展停止时，左右指针通常已经越过合法区间
+- 两个字符串前缀 DP 中，注意下标和长度偏移一位
+- 子序列可以不连续，子串必须连续
 
 ## 面试表达
 

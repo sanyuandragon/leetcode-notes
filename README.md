@@ -48,7 +48,10 @@
 | 42 | [接雨水](problems/0042-trapping-rain-water.md) | 困难 | 双指针 | `new` |
 | 46 | [全排列](problems/0046-permutations.md) | 中等 | 回溯 | `new` |
 | 53 | [最大子数组和](problems/0053-maximum-subarray.md) | 中等 | 动态规划 | `new` |
+| 56 | [合并区间](problems/0056-merge-intervals.md) | 中等 | 区间 | `new` |
+| 72 | [编辑距离](problems/0072-edit-distance.md) | 中等 | 动态规划 | `new` |
 | 92 | [反转链表 II](problems/0092-reverse-linked-list-ii.md) | 中等 | 链表 | `new` |
+| 94 | [二叉树的中序遍历](problems/0094-binary-tree-inorder-traversal.md) | 简单 | 二叉树 | `new` |
 | 102 | [二叉树的层序遍历](problems/0102-binary-tree-level-order-traversal.md) | 中等 | 二叉树 | `new` |
 | 121 | [买卖股票的最佳时机](problems/0121-best-time-to-buy-and-sell-stock.md) | 简单 | 贪心 | `new` |
 | 124 | [二叉树中的最大路径和](problems/0124-binary-tree-maximum-path-sum.md) | 困难 | 二叉树 | `new` |
@@ -60,6 +63,7 @@
 | 206 | [反转链表](problems/0206-reverse-linked-list.md) | 简单 | 链表 | `new` |
 | 236 | [二叉树的最近公共祖先](problems/0236-lowest-common-ancestor-of-a-binary-tree.md) | 中等 | 二叉树 | `new` |
 | 300 | [最长递增子序列](problems/0300-longest-increasing-subsequence.md) | 中等 | 动态规划 | `new` |
+| 1143 | [最长公共子序列](problems/1143-longest-common-subsequence.md) | 中等 | 动态规划 | `new` |
 | 1041 | [困于环中的机器人](problems/1041-robot-bounded-in-circle.md) | 中等 | 模拟 | `new` |
 | - | - | - | - | - |
 
@@ -82,13 +86,14 @@
 | 滑动窗口 | [sliding-window.md](topics/sliding-window.md) | 连续子数组/子串、最长/最短窗口、去重 |
 | 栈 | [stack.md](topics/stack.md) | 括号匹配、表达式、嵌套结构 |
 | 单调栈 | [monotonic-stack.md](topics/monotonic-stack.md) | 下一个更大元素、贡献法 |
+| 区间 | [intervals.md](topics/intervals.md) | 合并、插入、覆盖、扫描线 |
 | 回溯 | [backtracking.md](topics/backtracking.md) | 排列、组合、子集、棋盘搜索 |
-| 动态规划 | [dynamic-programming.md](topics/dynamic-programming.md) | 状态定义、转移、初始化、Kadane |
+| 动态规划 | [dynamic-programming.md](topics/dynamic-programming.md) | 状态定义、转移、初始化、Kadane、编辑距离、最长公共子序列 |
 | 贪心 | [greedy.md](topics/greedy.md) | 股票、区间、跳跃、前缀最优 |
 | 设计 | [design.md](topics/design.md) | LRU、哈希表+链表、数据结构组合 |
 | 并查集 | [union-find.md](topics/union-find.md) | 连通性、分组、合并查询 |
 | 链表 | [linked-list.md](topics/linked-list.md) | 虚拟头节点、尾插、删除节点、合并链表、分治归并、反转、区间反转、K 组反转、快慢指针、判环、入环点、相交链表 |
-| 二叉树 | [binary-tree.md](topics/binary-tree.md) | BFS、DFS、层序遍历、递归、树形 DP、最大路径和、最近公共祖先 |
+| 二叉树 | [binary-tree.md](topics/binary-tree.md) | BFS、DFS、前中后序遍历、层序遍历、递归、树形 DP、最大路径和、最近公共祖先 |
 | 图论 | [graph.md](topics/graph.md) | BFS、DFS、网格图、连通块 |
 
 ## 单题笔记结构

@@ -55,6 +55,61 @@ for (int i = 0; i < n; ++i) {
 }
 ```
 
+## 编辑距离二维 DP
+
+适用：两个字符串之间允许插入、删除、替换，求最少操作次数。
+
+```cpp
+int minDistance(string word1, string word2) {
+    int m = word1.size();
+    int n = word2.size();
+    vector<vector<int>> dp(m + 1, vector<int>(n + 1, 0));
+
+    for (int i = 0; i <= m; ++i) {
+        dp[i][0] = i;
+    }
+    for (int j = 0; j <= n; ++j) {
+        dp[0][j] = j;
+    }
+
+    for (int i = 1; i <= m; ++i) {
+        for (int j = 1; j <= n; ++j) {
+            if (word1[i - 1] == word2[j - 1]) {
+                dp[i][j] = dp[i - 1][j - 1];
+            } else {
+                dp[i][j] = min({dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1]}) + 1;
+            }
+        }
+    }
+
+    return dp[m][n];
+}
+```
+
+## 最长公共子序列二维 DP
+
+适用：两个字符串求最长公共子序列长度。
+
+```cpp
+int longestCommonSubsequence(string text1, string text2) {
+    int m = text1.size();
+    int n = text2.size();
+    vector<vector<int>> dp(m + 1, vector<int>(n + 1, 0));
+
+    for (int i = 1; i <= m; ++i) {
+        for (int j = 1; j <= n; ++j) {
+            if (text1[i - 1] == text2[j - 1]) {
+                dp[i][j] = dp[i - 1][j - 1] + 1;
+            } else {
+                dp[i][j] = max(dp[i - 1][j], dp[i][j - 1]);
+            }
+        }
+    }
+
+    return dp[m][n];
+}
+```
+
 ## 最长递增子序列 DP
 
 适用：求最长严格递增子序列长度，O(n^2) 写法清晰，适合先讲状态定义。
@@ -91,4 +146,6 @@ int lengthOfLIS(vector<int>& nums) {
 - 不要一上来写转移式，先定义状态
 - 空间优化时，倒序还是正序由依赖关系决定
 - 最大子数组和要把答案初始化为数组元素，不能初始化为 `0`
+- 编辑距离要初始化空前缀，`dp[i][0] = i`，`dp[0][j] = j`
+- LCS 中字符相同取左上加一，字符不同取上方和左方最大值
 - LIS 的 DP 答案是所有 `dp[i]` 的最大值，不一定是 `dp[n - 1]`

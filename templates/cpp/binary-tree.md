@@ -53,6 +53,48 @@ void preorder(TreeNode* root, vector<int>& ans) {
 }
 ```
 
+## 中序遍历
+
+适用：二叉树左根右访问；二叉搜索树中序遍历会得到升序序列。
+
+递归写法：
+
+```cpp
+void inorder(TreeNode* root, vector<int>& ans) {
+    if (root == nullptr) {
+        return;
+    }
+
+    inorder(root->left, ans);
+    ans.push_back(root->val);
+    inorder(root->right, ans);
+}
+```
+
+迭代写法：
+
+```cpp
+vector<int> inorderTraversal(TreeNode* root) {
+    vector<int> ans;
+    stack<TreeNode*> st;
+    TreeNode* cur = root;
+
+    while (cur != nullptr || !st.empty()) {
+        if (cur != nullptr) {
+            st.push(cur);
+            cur = cur->left;
+        } else {
+            cur = st.top();
+            st.pop();
+            ans.push_back(cur->val);
+            cur = cur->right;
+        }
+    }
+
+    return ans;
+}
+```
+
 ## 递归求高度
 
 ```cpp
@@ -120,6 +162,7 @@ TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
 - 空树要先返回，不要把 `nullptr` 推进队列
 - 需要从右到左时，调整孩子入队顺序或输出顺序
 - DFS 递归先写空节点出口，再写当前节点和左右子树逻辑
+- 中序遍历迭代版要先一路向左入栈，弹栈访问后再转向右子树
 - 最大路径和里，返回给父节点的只能是单边贡献，更新全局答案时才能左右都用
 - 最大路径和的 `ans` 要初始化为 `INT_MIN`，避免全负数树返回 0
 - 最近公共祖先里，`root == p || root == q` 是递归出口，因为节点可以是自己的祖先

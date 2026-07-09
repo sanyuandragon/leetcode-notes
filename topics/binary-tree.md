@@ -13,6 +13,7 @@
 
 - BFS 层序遍历：用队列，按层处理时先固定当前层 `size`
 - DFS 递归遍历：根据题意选择前序、中序或后序
+- DFS 迭代遍历：用栈模拟递归调用过程
 - 自底向上：高度、平衡性、直径等题常用后序
 - 路径搜索：递归维护当前路径或累计值
 - 树形 DP：明确当前节点返回给父节点的状态，以及在当前节点处如何更新全局答案
@@ -22,6 +23,7 @@
 
 | 题号 | 标题 | 难度 | 关键点 | 状态 |
 | --- | --- | --- | --- | --- |
+| 94 | [二叉树的中序遍历](../problems/0094-binary-tree-inorder-traversal.md) | 简单 | 递归按左根右访问；迭代用栈一路向左、弹栈访问、转右子树 | `new` |
 | 102 | [二叉树的层序遍历](../problems/0102-binary-tree-level-order-traversal.md) | 中等 | 队列 BFS，每层开始固定 `size` 来分层 | `new` |
 | 124 | [二叉树中的最大路径和](../problems/0124-binary-tree-maximum-path-sum.md) | 困难 | 后序 DFS 返回单边贡献，当前节点处用左右贡献更新全局最大路径和 | `new` |
 | 236 | [二叉树的最近公共祖先](../problems/0236-lowest-common-ancestor-of-a-binary-tree.md) | 中等 | 左右子树分别找目标，左右都非空则当前节点是最近公共祖先 | `new` |
@@ -30,6 +32,7 @@
 ## 模板
 
 - 层序遍历 BFS：见 [binary-tree.md](../templates/cpp/binary-tree.md)
+- 中序遍历递归和迭代：见 [binary-tree.md](../templates/cpp/binary-tree.md)
 - 二叉树最大路径和：见 [binary-tree.md](../templates/cpp/binary-tree.md)
 - 最近公共祖先：见 [binary-tree.md](../templates/cpp/binary-tree.md)
 
@@ -39,6 +42,7 @@
 - 按层输出时，必须区分当前层和下一层
 - 访问 `node->left`、`node->right` 前，确认 `node` 非空
 - 递归题要明确当前函数返回什么，遍历题要明确访问顺序
+- 中序遍历是左、根、右；迭代写法访问后要转向右子树
 - 路径和题要区分“能返回给父节点的单边路径”和“只用于更新答案的完整路径”
 - 最近公共祖先题要区分普通二叉树和二叉搜索树，普通二叉树不能按节点值大小走
 

@@ -24,6 +24,10 @@
 | 2026-07-07 | 142 | [环形链表 II](problems/0142-linked-list-cycle-ii.md) | 链表 / 哈希表 / 快慢指针 | 2026-07-08 |
 | 2026-07-07 | 124 | [二叉树中的最大路径和](problems/0124-binary-tree-maximum-path-sum.md) | 二叉树 / 树形 DP | 2026-07-08 |
 | 2026-07-07 | 19 | [删除链表的倒数第 N 个结点](problems/0019-remove-nth-node-from-end-of-list.md) | 链表 / 快慢指针 | 2026-07-08 |
+| 2026-07-09 | 56 | [合并区间](problems/0056-merge-intervals.md) | 区间 / 排序 | 2026-07-10 |
+| 2026-07-09 | 72 | [编辑距离](problems/0072-edit-distance.md) | 动态规划 / 字符串 | 2026-07-10 |
+| 2026-07-09 | 94 | [二叉树的中序遍历](problems/0094-binary-tree-inorder-traversal.md) | 二叉树 / DFS / 栈 | 2026-07-10 |
+| 2026-07-09 | 1143 | [最长公共子序列](problems/1143-longest-common-subsequence.md) | 动态规划 / 字符串 | 2026-07-10 |
 | 2026-06-30 | 200 | [岛屿数量](problems/0200-number-of-islands.md) | 图论 | 2026-07-01 |
 | 2026-06-30 | 33 | [搜索旋转排序数组](problems/0033-search-in-rotated-sorted-array.md) | 二分查找 | 2026-07-01 |
 | 2026-06-30 | 102 | [二叉树的层序遍历](problems/0102-binary-tree-level-order-traversal.md) | 二叉树 | 2026-07-01 |
@@ -56,6 +60,10 @@
 | P1 | 142 | [环形链表 II](problems/0142-linked-list-cycle-ii.md) | 容易把节点值当作唯一标识，或混淆快慢指针相遇点和入环点 | 默写“哈希表第一次重复是入口；快慢相遇后 head 和相遇点同步走” |
 | P1 | 124 | [二叉树中的最大路径和](problems/0124-binary-tree-maximum-path-sum.md) | 容易混淆返回给父节点的单边贡献和更新答案时的双边路径 | 默写“返回单边贡献，ans 用 left + right + node 更新，负贡献丢弃” |
 | P1 | 19 | [删除链表的倒数第 N 个结点](problems/0019-remove-nth-node-from-end-of-list.md) | 容易忘记删除头节点要用虚拟头节点，或快慢指针中慢指针起点写错 | 默写“快指针先走 n 步，慢指针从 dummy 出发，停在前驱” |
+| P1 | 56 | [合并区间](problems/0056-merge-intervals.md) | 容易忘记排序，或把端点相接误判为不重叠 | 默写“按左端点排序，只和 ans.back 比较，不重叠条件是 start > end” |
+| P1 | 72 | [编辑距离](problems/0072-edit-distance.md) | 容易混淆 `i/j` 是长度不是下标，或忘记初始化空前缀 | 默写 `dp[i][j]` 含义、第一行列初始化、删插换三种转移 |
+| P1 | 94 | [二叉树的中序遍历](problems/0094-binary-tree-inorder-traversal.md) | 迭代写法容易忘记一路向左入栈，或弹栈访问后忘记转右子树 | 默写“左根右；栈中保存待访问节点，弹栈访问后 cur = cur->right” |
+| P1 | 1143 | [最长公共子序列](problems/1143-longest-common-subsequence.md) | 容易把子序列当成子串，或忘记字符不同时取上/左最大值 | 默写“相等左上 + 1，不等 max(上, 左)” |
 | P1 | 200 | [岛屿数量](problems/0200-number-of-islands.md) | 网格 BFS 的起点标记、入队时标记和四方向边界容易漏 | 默写 `dx/dy`、新岛 `ans++`、BFS 中入队即沉岛 |
 | P1 | 33 | [搜索旋转排序数组](problems/0033-search-in-rotated-sorted-array.md) | 有序半边判断和 target 区间边界容易混 | 默写“先判断哪半边有序，再判断 target 是否在有序半边” |
 | P1 | 102 | [二叉树的层序遍历](problems/0102-binary-tree-level-order-traversal.md) | `size = q.size()` 分层含义容易被写成动态队列长度 | 默写 BFS 模板，解释为什么每层开始要先固定 `size` |
@@ -93,13 +101,17 @@
 | 模拟 | 重复执行指令时，不要无限模拟；看一轮后的坐标和方向是否产生周期 | [1041. 困于环中的机器人](problems/1041-robot-bounded-in-circle.md) | 默写 `dir`、`dx/dy`、左转 `(dir + 3) % 4`、返回条件 |
 | 二分查找 | 旋转数组整体不单调，但每轮至少一半有序；先定位有序半边再缩小区间 | [33. 搜索旋转排序数组](problems/0033-search-in-rotated-sorted-array.md) | 默写 `nums[left] <= nums[mid]` 和左右区间判断条件 |
 | 动态规划 | 最长递增子序列先定义以当前位置结尾的最优长度，再理解 `tails` 二分优化 | [300. 最长递增子序列](problems/0300-longest-increasing-subsequence.md) | 默写 O(n^2) DP 和 `tails[len - 1]` 的含义 |
+| 动态规划 | 编辑距离是两个字符串前缀的二维 DP，字符不同考虑删除、插入、替换 | [72. 编辑距离](problems/0072-edit-distance.md) | 默写 `dp[i][j]`、`dp[i][0]`、`dp[0][j]` 和三种转移 |
+| 动态规划 | 最长公共子序列是两个字符串前缀 DP；相等时延长公共子序列，不等时跳过其中一个末尾 | [1143. 最长公共子序列](problems/1143-longest-common-subsequence.md) | 默写 `dp[i][j]` 含义和两种转移 |
 | 二叉树 | 最大路径和要区分单边贡献和完整路径；全局答案可以用左右两边，返回父节点只能选一边 | [124. 二叉树中的最大路径和](problems/0124-binary-tree-maximum-path-sum.md) | 默写 `dfs` 返回值含义、`ans = INT_MIN` 和负贡献取 0 |
 | 二叉树 | 最近公共祖先要定义好递归返回值：当前子树里找到的目标节点或已经确定的答案 | [236. 二叉树的最近公共祖先](problems/0236-lowest-common-ancestor-of-a-binary-tree.md) | 默写 `root == p/q`、递归左右、`left && right` 返回当前节点 |
+| 二叉树 | 中序遍历是左根右；迭代版用栈模拟递归，一路向左后弹栈访问再转右 | [94. 二叉树的中序遍历](problems/0094-binary-tree-inorder-traversal.md) | 默写递归版和栈迭代版 |
 | 二叉树 | 层序遍历按层输出时，要用队列 BFS，并在每层开始固定当前层节点数 | [102. 二叉树的层序遍历](problems/0102-binary-tree-level-order-traversal.md) | 默写 `while (!q.empty()) -> size -> for size 次 -> 入队孩子` |
 | 字符串 | 回文子串要同时处理奇数中心和偶数中心，扩展停止后边界已经多走一步 | [5. 最长回文子串](problems/0005-longest-palindromic-substring.md) | 默写中心扩展模板，并解释 `start = left + 1` |
 | 哈希表 | 用值到下标的映射把查找补数降到均摊 O(1)，并保持先查后插 | [1. 两数之和](problems/0001-two-sum.md) | 默写 `need`、`find`、`return {mp[need], i}`、插入当前数 |
 | 双指针 | 排序后固定前缀，再在剩余区间对撞；去重需要分层处理 | [15. 三数之和](problems/0015-three-sum.md) | 默写命中答案后的 `l++ / r--` 与两段去重循环 |
 | 双指针 | 接雨水可以先找全局最高柱作为分界，左右两边分别维护当前最高挡板 | [42. 接雨水](problems/0042-trapping-rain-water.md) | 默写 `leftHeight/rightHeight` 的含义和两段扫描边界 |
+| 区间 | 合并区间先按左端点排序，再维护当前合并结果的右端点 | [56. 合并区间](problems/0056-merge-intervals.md) | 默写 `ans.empty() || start > ans.back()[1]` 和右端点取 `max` |
 | 链表 | 结果头节点可能变化时，用虚拟头节点统一处理；尾插后尾指针必须前进 | [21. 合并两个有序链表](problems/0021-merge-two-sorted-lists.md) | 默写 `dummy -> tail -> 接节点 -> 移动原链表 -> tail 前进 -> 接剩余` |
 | 动态规划 | 最大子数组和要定义“以当前位置结尾”的状态，全局答案单独维护 | [53. 最大子数组和](problems/0053-maximum-subarray.md) | 默写 `sum = max(sum + x, x)`，并用全负数例子检查初始化 |
 | - | - | - | - |

@@ -12,6 +12,7 @@
 - [sliding-window.md](sliding-window.md)：滑动窗口
 - [stack.md](stack.md)：栈、括号匹配、嵌套结构
 - [monotonic-stack.md](monotonic-stack.md)：单调栈
+- [intervals.md](intervals.md)：区间合并、插入、覆盖
 - [backtracking.md](backtracking.md)：回溯、排列、组合、子集
 - [dynamic-programming.md](dynamic-programming.md)：线性 DP
 - [greedy.md](greedy.md)：贪心、股票一次交易、前缀最优
