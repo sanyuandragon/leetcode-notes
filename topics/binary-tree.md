@@ -26,6 +26,7 @@
 | 94 | [二叉树的中序遍历](../problems/0094-binary-tree-inorder-traversal.md) | 简单 | 递归按左根右访问；迭代用栈一路向左、弹栈访问、转右子树 | `new` |
 | 102 | [二叉树的层序遍历](../problems/0102-binary-tree-level-order-traversal.md) | 中等 | 队列 BFS，每层开始固定 `size` 来分层 | `new` |
 | 124 | [二叉树中的最大路径和](../problems/0124-binary-tree-maximum-path-sum.md) | 困难 | 后序 DFS 返回单边贡献，当前节点处用左右贡献更新全局最大路径和 | `new` |
+| 199 | [二叉树的右视图](../problems/0199-binary-tree-right-side-view.md) | 中等 | 队列 BFS 按层遍历，每层取最后一个节点作为右视图 | `new` |
 | 236 | [二叉树的最近公共祖先](../problems/0236-lowest-common-ancestor-of-a-binary-tree.md) | 中等 | 左右子树分别找目标，左右都非空则当前节点是最近公共祖先 | `new` |
 | - | - | - | - | - |
 
@@ -33,6 +34,7 @@
 
 - 层序遍历 BFS：见 [binary-tree.md](../templates/cpp/binary-tree.md)
 - 中序遍历递归和迭代：见 [binary-tree.md](../templates/cpp/binary-tree.md)
+- 二叉树右视图：见 [binary-tree.md](../templates/cpp/binary-tree.md)
 - 二叉树最大路径和：见 [binary-tree.md](../templates/cpp/binary-tree.md)
 - 最近公共祖先：见 [binary-tree.md](../templates/cpp/binary-tree.md)
 
@@ -40,6 +42,7 @@
 
 - 空树要先处理
 - 按层输出时，必须区分当前层和下一层
+- 右视图不是只沿着右孩子走，而是每一层取最右侧存在的节点
 - 访问 `node->left`、`node->right` 前，确认 `node` 非空
 - 递归题要明确当前函数返回什么，遍历题要明确访问顺序
 - 中序遍历是左、根、右；迭代写法访问后要转向右子树

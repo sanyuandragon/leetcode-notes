@@ -39,6 +39,44 @@ vector<vector<int>> levelOrder(TreeNode* root) {
 }
 ```
 
+## 右视图 BFS
+
+适用：二叉树右视图、每层取最右侧节点等问题。
+
+```cpp
+vector<int> rightSideView(TreeNode* root) {
+    if (root == nullptr) {
+        return {};
+    }
+
+    queue<TreeNode*> q;
+    q.push(root);
+    vector<int> ans;
+
+    while (!q.empty()) {
+        int size = q.size();
+
+        for (int i = 0; i < size; ++i) {
+            TreeNode* node = q.front();
+            q.pop();
+
+            if (i == size - 1) {
+                ans.push_back(node->val);
+            }
+
+            if (node->left != nullptr) {
+                q.push(node->left);
+            }
+            if (node->right != nullptr) {
+                q.push(node->right);
+            }
+        }
+    }
+
+    return ans;
+}
+```
+
 ## DFS 递归遍历
 
 ```cpp
@@ -161,6 +199,7 @@ TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
 - 层序遍历每层开始先保存 `size = q.size()`，不要让新入队的孩子影响当前层循环
 - 空树要先返回，不要把 `nullptr` 推进队列
 - 需要从右到左时，调整孩子入队顺序或输出顺序
+- 右视图取的是每层最右侧存在的节点，不是只沿着右孩子一路向下
 - DFS 递归先写空节点出口，再写当前节点和左右子树逻辑
 - 中序遍历迭代版要先一路向左入栈，弹栈访问后再转向右子树
 - 最大路径和里，返回给父节点的只能是单边贡献，更新全局答案时才能左右都用

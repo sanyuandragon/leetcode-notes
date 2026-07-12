@@ -6,6 +6,8 @@
 
 | 日期 | 题号 | 标题 | 主知识点 | 下次复盘 |
 | --- | --- | --- | --- | --- |
+| 2026-07-12 | 4 | [寻找两个正序数组的中位数](problems/0004-median-of-two-sorted-arrays.md) | 二分查找 / 数组划分 | 2026-07-13 |
+| 2026-07-12 | 199 | [二叉树的右视图](problems/0199-binary-tree-right-side-view.md) | 二叉树 / BFS / 层序遍历 | 2026-07-13 |
 | 2026-07-01 | 206 | [反转链表](problems/0206-reverse-linked-list.md) | 链表 | 2026-07-02 |
 | 2026-07-01 | 146 | [LRU 缓存](problems/0146-lru-cache.md) | 设计 | 2026-07-02 |
 | 2026-07-01 | 3 | [无重复字符的最长子串](problems/0003-longest-substring-without-repeating-characters.md) | 滑动窗口 | 2026-07-02 |
@@ -45,6 +47,7 @@
 | P2 | 206 | [反转链表](problems/0206-reverse-linked-list.md) | 保存后继、改指针、返回新头的顺序容易写乱 | 默写 `nex = curr->next -> curr->next = prev -> prev = curr -> curr = nex` |
 | P1 | 146 | [LRU 缓存](problems/0146-lru-cache.md) | 哈希表和双向链表同步、哨兵节点指针操作容易错 | 默写 `addToHead/removeNode/removeTail/moveToHead` 四个函数 |
 | P1 | 3 | [无重复字符的最长子串](problems/0003-longest-substring-without-repeating-characters.md) | 左端移除字符、右端边界和窗口长度公式容易混 | 默写 `window`、`right = -1`、左端移除、右端扩张 |
+| P1 | 4 | [寻找两个正序数组的中位数](problems/0004-median-of-two-sorted-arrays.md) | 切分定义、`cut2` 公式和二分调整方向容易混 | 默写 `cut1 + cut2 = (m+n+1)/2`，解释四个边界值含义 |
 | P1 | 46 | [全排列](problems/0046-permutations.md) | 回溯状态恢复容易漏，排列和组合模板容易混 | 默写 `path`、`used`、做选择、递归、撤销选择 |
 | P2 | 141 | [环形链表](problems/0141-linked-list-cycle.md) | 快慢指针判空条件和比较节点地址容易漏 | 默写 `fast != nullptr && fast->next != nullptr`，说明为什么有环会相遇 |
 | P2 | 20 | [有效的括号](problems/0020-valid-parentheses.md) | 空栈判断和最后 `st.empty()` 容易漏 | 默写“左括号压期待右括号，右括号匹配栈顶” |
@@ -63,6 +66,7 @@
 | P1 | 56 | [合并区间](problems/0056-merge-intervals.md) | 容易忘记排序，或把端点相接误判为不重叠 | 默写“按左端点排序，只和 ans.back 比较，不重叠条件是 start > end” |
 | P1 | 72 | [编辑距离](problems/0072-edit-distance.md) | 容易混淆 `i/j` 是长度不是下标，或忘记初始化空前缀 | 默写 `dp[i][j]` 含义、第一行列初始化、删插换三种转移 |
 | P1 | 94 | [二叉树的中序遍历](problems/0094-binary-tree-inorder-traversal.md) | 迭代写法容易忘记一路向左入栈，或弹栈访问后忘记转右子树 | 默写“左根右；栈中保存待访问节点，弹栈访问后 cur = cur->right” |
+| P1 | 199 | [二叉树的右视图](problems/0199-binary-tree-right-side-view.md) | 容易误解成只沿右孩子走，或忘记每层开始固定 `size` | 默写“层序遍历每层取最后一个节点”，用缺少右孩子的例子自检 |
 | P1 | 1143 | [最长公共子序列](problems/1143-longest-common-subsequence.md) | 容易把子序列当成子串，或忘记字符不同时取上/左最大值 | 默写“相等左上 + 1，不等 max(上, 左)” |
 | P1 | 200 | [岛屿数量](problems/0200-number-of-islands.md) | 网格 BFS 的起点标记、入队时标记和四方向边界容易漏 | 默写 `dx/dy`、新岛 `ans++`、BFS 中入队即沉岛 |
 | P1 | 33 | [搜索旋转排序数组](problems/0033-search-in-rotated-sorted-array.md) | 有序半边判断和 target 区间边界容易混 | 默写“先判断哪半边有序，再判断 target 是否在有序半边” |
@@ -100,6 +104,7 @@
 | 图论 | 网格连通块计数要把格子看成点，四方向相邻看成边；遇到新陆地后 BFS 清理整块 | [200. 岛屿数量](problems/0200-number-of-islands.md) | 默写 `ans++ -> push -> 标记 -> BFS 四方向扩展` |
 | 模拟 | 重复执行指令时，不要无限模拟；看一轮后的坐标和方向是否产生周期 | [1041. 困于环中的机器人](problems/1041-robot-bounded-in-circle.md) | 默写 `dir`、`dx/dy`、左转 `(dir + 3) % 4`、返回条件 |
 | 二分查找 | 旋转数组整体不单调，但每轮至少一半有序；先定位有序半边再缩小区间 | [33. 搜索旋转排序数组](problems/0033-search-in-rotated-sorted-array.md) | 默写 `nums[left] <= nums[mid]` 和左右区间判断条件 |
+| 二分查找 | 两个有序数组中位数要把中位数转成左右半区划分，并在短数组上二分切分点 | [4. 寻找两个正序数组的中位数](problems/0004-median-of-two-sorted-arrays.md) | 默写 `left1 <= right2 && left2 <= right1` 和奇偶返回值 |
 | 动态规划 | 最长递增子序列先定义以当前位置结尾的最优长度，再理解 `tails` 二分优化 | [300. 最长递增子序列](problems/0300-longest-increasing-subsequence.md) | 默写 O(n^2) DP 和 `tails[len - 1]` 的含义 |
 | 动态规划 | 编辑距离是两个字符串前缀的二维 DP，字符不同考虑删除、插入、替换 | [72. 编辑距离](problems/0072-edit-distance.md) | 默写 `dp[i][j]`、`dp[i][0]`、`dp[0][j]` 和三种转移 |
 | 动态规划 | 最长公共子序列是两个字符串前缀 DP；相等时延长公共子序列，不等时跳过其中一个末尾 | [1143. 最长公共子序列](problems/1143-longest-common-subsequence.md) | 默写 `dp[i][j]` 含义和两种转移 |
@@ -107,6 +112,7 @@
 | 二叉树 | 最近公共祖先要定义好递归返回值：当前子树里找到的目标节点或已经确定的答案 | [236. 二叉树的最近公共祖先](problems/0236-lowest-common-ancestor-of-a-binary-tree.md) | 默写 `root == p/q`、递归左右、`left && right` 返回当前节点 |
 | 二叉树 | 中序遍历是左根右；迭代版用栈模拟递归，一路向左后弹栈访问再转右 | [94. 二叉树的中序遍历](problems/0094-binary-tree-inorder-traversal.md) | 默写递归版和栈迭代版 |
 | 二叉树 | 层序遍历按层输出时，要用队列 BFS，并在每层开始固定当前层节点数 | [102. 二叉树的层序遍历](problems/0102-binary-tree-level-order-traversal.md) | 默写 `while (!q.empty()) -> size -> for size 次 -> 入队孩子` |
+| 二叉树 | 右视图是每一层最右侧存在的节点，不是简单沿右指针向下走 | [199. 二叉树的右视图](problems/0199-binary-tree-right-side-view.md) | 默写 BFS 每层取 `i == size - 1`，并解释为什么缺少右孩子时仍然成立 |
 | 字符串 | 回文子串要同时处理奇数中心和偶数中心，扩展停止后边界已经多走一步 | [5. 最长回文子串](problems/0005-longest-palindromic-substring.md) | 默写中心扩展模板，并解释 `start = left + 1` |
 | 哈希表 | 用值到下标的映射把查找补数降到均摊 O(1)，并保持先查后插 | [1. 两数之和](problems/0001-two-sum.md) | 默写 `need`、`find`、`return {mp[need], i}`、插入当前数 |
 | 双指针 | 排序后固定前缀，再在剩余区间对撞；去重需要分层处理 | [15. 三数之和](problems/0015-three-sum.md) | 默写命中答案后的 `l++ / r--` 与两段去重循环 |

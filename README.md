@@ -37,6 +37,7 @@
 | --- | --- | --- | --- | --- |
 | 1 | [两数之和](problems/0001-two-sum.md) | 简单 | 哈希表 | `new` |
 | 3 | [无重复字符的最长子串](problems/0003-longest-substring-without-repeating-characters.md) | 中等 | 滑动窗口 | `new` |
+| 4 | [寻找两个正序数组的中位数](problems/0004-median-of-two-sorted-arrays.md) | 困难 | 二分查找 | `new` |
 | 5 | [最长回文子串](problems/0005-longest-palindromic-substring.md) | 中等 | 字符串 | `new` |
 | 15 | [三数之和](problems/0015-three-sum.md) | 中等 | 双指针 | `new` |
 | 19 | [删除链表的倒数第 N 个结点](problems/0019-remove-nth-node-from-end-of-list.md) | 中等 | 链表 | `new` |
@@ -59,6 +60,7 @@
 | 142 | [环形链表 II](problems/0142-linked-list-cycle-ii.md) | 中等 | 链表 | `new` |
 | 146 | [LRU 缓存](problems/0146-lru-cache.md) | 中等 | 设计 | `new` |
 | 160 | [相交链表](problems/0160-intersection-of-two-linked-lists.md) | 简单 | 链表 | `new` |
+| 199 | [二叉树的右视图](problems/0199-binary-tree-right-side-view.md) | 中等 | 二叉树 | `new` |
 | 200 | [岛屿数量](problems/0200-number-of-islands.md) | 中等 | 图论 | `new` |
 | 206 | [反转链表](problems/0206-reverse-linked-list.md) | 简单 | 链表 | `new` |
 | 236 | [二叉树的最近公共祖先](problems/0236-lowest-common-ancestor-of-a-binary-tree.md) | 中等 | 二叉树 | `new` |
@@ -82,7 +84,7 @@
 | 字符串 | [string.md](topics/string.md) | 回文、子串、前后缀、模式匹配 |
 | 模拟 | [simulation.md](topics/simulation.md) | 方向移动、状态维护、周期判断 |
 | 双指针 | [two-pointers.md](topics/two-pointers.md) | 有序数组、区间收缩、三数之和、接雨水、快慢指针 |
-| 二分查找 | [binary-search.md](topics/binary-search.md) | 有序查找、旋转数组、答案二分、边界定位 |
+| 二分查找 | [binary-search.md](topics/binary-search.md) | 有序查找、两个有序数组中位数、旋转数组、答案二分、边界定位 |
 | 滑动窗口 | [sliding-window.md](topics/sliding-window.md) | 连续子数组/子串、最长/最短窗口、去重 |
 | 栈 | [stack.md](topics/stack.md) | 括号匹配、表达式、嵌套结构 |
 | 单调栈 | [monotonic-stack.md](topics/monotonic-stack.md) | 下一个更大元素、贡献法 |
@@ -93,7 +95,7 @@
 | 设计 | [design.md](topics/design.md) | LRU、哈希表+链表、数据结构组合 |
 | 并查集 | [union-find.md](topics/union-find.md) | 连通性、分组、合并查询 |
 | 链表 | [linked-list.md](topics/linked-list.md) | 虚拟头节点、尾插、删除节点、合并链表、分治归并、反转、区间反转、K 组反转、快慢指针、判环、入环点、相交链表 |
-| 二叉树 | [binary-tree.md](topics/binary-tree.md) | BFS、DFS、前中后序遍历、层序遍历、递归、树形 DP、最大路径和、最近公共祖先 |
+| 二叉树 | [binary-tree.md](topics/binary-tree.md) | BFS、DFS、前中后序遍历、层序遍历、右视图、递归、树形 DP、最大路径和、最近公共祖先 |
 | 图论 | [graph.md](topics/graph.md) | BFS、DFS、网格图、连通块 |
 
 ## 单题笔记结构
