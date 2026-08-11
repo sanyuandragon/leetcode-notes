@@ -6,6 +6,8 @@
 
 | 日期 | 题号 | 标题 | 主知识点 | 下次复盘 |
 | --- | --- | --- | --- | --- |
+| 2026-08-12 | 31 | [下一个排列](problems/0031-next-permutation.md) | 双指针 / 贪心 / 后缀反转 | 2026-08-13 |
+| 2026-08-12 | 148 | [排序链表](problems/0148-sort-list.md) | 链表 / 归并排序 / 快慢指针 | 2026-08-13 |
 | 2026-07-12 | 4 | [寻找两个正序数组的中位数](problems/0004-median-of-two-sorted-arrays.md) | 二分查找 / 数组划分 | 2026-07-13 |
 | 2026-07-12 | 199 | [二叉树的右视图](problems/0199-binary-tree-right-side-view.md) | 二叉树 / BFS / 层序遍历 | 2026-07-13 |
 | 2026-07-01 | 206 | [反转链表](problems/0206-reverse-linked-list.md) | 链表 | 2026-07-02 |
@@ -51,8 +53,10 @@
 | P1 | 46 | [全排列](problems/0046-permutations.md) | 回溯状态恢复容易漏，排列和组合模板容易混 | 默写 `path`、`used`、做选择、递归、撤销选择 |
 | P2 | 141 | [环形链表](problems/0141-linked-list-cycle.md) | 快慢指针判空条件和比较节点地址容易漏 | 默写 `fast != nullptr && fast->next != nullptr`，说明为什么有环会相遇 |
 | P2 | 20 | [有效的括号](problems/0020-valid-parentheses.md) | 空栈判断和最后 `st.empty()` 容易漏 | 默写“左括号压期待右括号，右括号匹配栈顶” |
+| P1 | 148 | [排序链表](problems/0148-sort-list.md) | 找中点后断链、两节点拆分和归并尾指针容易写错 | 默写“快慢指针断链 -> 递归排序左右 -> mergeTwoLists”，用两个节点链表自检 |
 | P2 | 121 | [买卖股票的最佳时机](problems/0121-best-time-to-buy-and-sell-stock.md) | 容易和多次交易股票题混淆，或忘记不能排序 | 只看题名，复述“每天当卖出日，维护历史最低价” |
 | P1 | 25 | [K 个一组翻转链表](problems/0025-reverse-nodes-in-k-group.md) | 每组反转后的四段连接容易混，尤其是不足 `k` 个不能反转 | 默写“确认够 k 个 -> 反转 k 个 -> 组尾接下一段 -> 前驱接新头” |
+| P1 | 31 | [下一个排列](problems/0031-next-permutation.md) | 两个扫描方向、比较符号和最后反转后缀容易写错 | 默写“找 i -> 找 j -> swap -> reverse 后缀”，用 `[3,2,1]` 和 `[1,1,5]` 自检 |
 | P1 | 92 | [反转链表 II](problems/0092-reverse-linked-list-ii.md) | 区间前驱、反转后旧头变尾、左右两侧接回顺序容易混 | 默写“定位前驱 -> 反转固定长度 -> 旧头接右侧 -> 前驱接新头” |
 | P1 | 1041 | [困于环中的机器人](problems/1041-robot-bounded-in-circle.md) | 容易只判断回到原点，漏掉一轮后方向改变也会有界 | 默写“回原点或方向改变即有界”，检查左转取模 |
 | P1 | 236 | [二叉树的最近公共祖先](problems/0236-lowest-common-ancestor-of-a-binary-tree.md) | 递归返回值含义容易模糊，尤其是遇到 `p/q` 直接返回和左右都非空返回当前节点 | 默写“空或命中返回 root，左右都非空返回 root，否则返回非空侧” |
@@ -94,6 +98,7 @@
 | 回溯 | 全排列每层从所有未使用元素中选一个，递归后必须恢复 `path` 和 `used` | [46. 全排列](problems/0046-permutations.md) | 默写“选择 -> 递归 -> 撤销选择”，区分排列用 `used`、组合用 `startIndex` |
 | 链表 | 快慢指针判环要比较节点地址；有环时快指针会在环内追上慢指针 | [141. 环形链表](problems/0141-linked-list-cycle.md) | 默写 `slow` 一步、`fast` 两步、相遇返回 true |
 | 链表 | 环形链表 II 要返回入环点；哈希表找第一次重复节点，O(1) 解法用快慢指针二次相遇 | [142. 环形链表 II](problems/0142-linked-list-cycle-ii.md) | 默写 `unordered_set<ListNode*>` 和 Floyd 找入口两种写法 |
+| 链表 | 排序链表适合归并排序，关键是找中点后断链并复用合并两个有序链表 | [148. 排序链表](problems/0148-sort-list.md) | 默写 `middleNode`、`pre->next = nullptr`、递归排序和 `mergeTwoLists` |
 | 链表 | 相交链表需要比较节点地址，并用两个指针切换链表头来抵消长度差 | [160. 相交链表](problems/0160-intersection-of-two-linked-lists.md) | 默写 `p = p ? p->next : headB` 和 `q = q ? q->next : headA` |
 | 链表 | 合并 K 个升序链表可以复用合并两个链表模板，再用分治减少重复扫描 | [23. 合并 K 个升序链表](problems/0023-merge-k-sorted-lists.md) | 默写 `step = 1, 2, 4...` 和 `i += step * 2` |
 | 链表 | 删除倒数第 N 个节点要定位到前驱；快慢指针法中快指针先走 `n` 步，慢指针从 dummy 出发 | [19. 删除链表的倒数第 N 个结点](problems/0019-remove-nth-node-from-end-of-list.md) | 默写长度法和一趟快慢指针法 |
@@ -116,6 +121,7 @@
 | 字符串 | 回文子串要同时处理奇数中心和偶数中心，扩展停止后边界已经多走一步 | [5. 最长回文子串](problems/0005-longest-palindromic-substring.md) | 默写中心扩展模板，并解释 `start = left + 1` |
 | 哈希表 | 用值到下标的映射把查找补数降到均摊 O(1)，并保持先查后插 | [1. 两数之和](problems/0001-two-sum.md) | 默写 `need`、`find`、`return {mp[need], i}`、插入当前数 |
 | 双指针 | 排序后固定前缀，再在剩余区间对撞；去重需要分层处理 | [15. 三数之和](problems/0015-three-sum.md) | 默写命中答案后的 `l++ / r--` 与两段去重循环 |
+| 双指针 | 下一个排列要从右侧低位找第一个可增大的拐点，交换后把后缀调成最小 | [31. 下一个排列](problems/0031-next-permutation.md) | 默写 `nums[i] < nums[i+1]`、找严格更大的 `j`、反转 `i+1` 到末尾 |
 | 双指针 | 接雨水可以先找全局最高柱作为分界，左右两边分别维护当前最高挡板 | [42. 接雨水](problems/0042-trapping-rain-water.md) | 默写 `leftHeight/rightHeight` 的含义和两段扫描边界 |
 | 区间 | 合并区间先按左端点排序，再维护当前合并结果的右端点 | [56. 合并区间](problems/0056-merge-intervals.md) | 默写 `ans.empty() || start > ans.back()[1]` 和右端点取 `max` |
 | 链表 | 结果头节点可能变化时，用虚拟头节点统一处理；尾插后尾指针必须前进 | [21. 合并两个有序链表](problems/0021-merge-two-sorted-lists.md) | 默写 `dummy -> tail -> 接节点 -> 移动原链表 -> tail 前进 -> 接剩余` |

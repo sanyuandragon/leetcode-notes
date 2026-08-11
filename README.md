@@ -45,6 +45,7 @@
 | 21 | [合并两个有序链表](problems/0021-merge-two-sorted-lists.md) | 简单 | 链表 | `new` |
 | 23 | [合并 K 个升序链表](problems/0023-merge-k-sorted-lists.md) | 困难 | 链表 | `new` |
 | 25 | [K 个一组翻转链表](problems/0025-reverse-nodes-in-k-group.md) | 困难 | 链表 | `new` |
+| 31 | [下一个排列](problems/0031-next-permutation.md) | 中等 | 双指针 | `new` |
 | 33 | [搜索旋转排序数组](problems/0033-search-in-rotated-sorted-array.md) | 中等 | 二分查找 | `new` |
 | 42 | [接雨水](problems/0042-trapping-rain-water.md) | 困难 | 双指针 | `new` |
 | 46 | [全排列](problems/0046-permutations.md) | 中等 | 回溯 | `new` |
@@ -59,6 +60,7 @@
 | 141 | [环形链表](problems/0141-linked-list-cycle.md) | 简单 | 链表 | `new` |
 | 142 | [环形链表 II](problems/0142-linked-list-cycle-ii.md) | 中等 | 链表 | `new` |
 | 146 | [LRU 缓存](problems/0146-lru-cache.md) | 中等 | 设计 | `new` |
+| 148 | [排序链表](problems/0148-sort-list.md) | 中等 | 链表 | `new` |
 | 160 | [相交链表](problems/0160-intersection-of-two-linked-lists.md) | 简单 | 链表 | `new` |
 | 199 | [二叉树的右视图](problems/0199-binary-tree-right-side-view.md) | 中等 | 二叉树 | `new` |
 | 200 | [岛屿数量](problems/0200-number-of-islands.md) | 中等 | 图论 | `new` |
@@ -83,7 +85,7 @@
 | 哈希表 | [hash-table.md](topics/hash-table.md) | 两数之和、分组、计数 |
 | 字符串 | [string.md](topics/string.md) | 回文、子串、前后缀、模式匹配 |
 | 模拟 | [simulation.md](topics/simulation.md) | 方向移动、状态维护、周期判断 |
-| 双指针 | [two-pointers.md](topics/two-pointers.md) | 有序数组、区间收缩、三数之和、接雨水、快慢指针 |
+| 双指针 | [two-pointers.md](topics/two-pointers.md) | 有序数组、区间收缩、后缀扫描、三数之和、接雨水、快慢指针 |
 | 二分查找 | [binary-search.md](topics/binary-search.md) | 有序查找、两个有序数组中位数、旋转数组、答案二分、边界定位 |
 | 滑动窗口 | [sliding-window.md](topics/sliding-window.md) | 连续子数组/子串、最长/最短窗口、去重 |
 | 栈 | [stack.md](topics/stack.md) | 括号匹配、表达式、嵌套结构 |
@@ -94,7 +96,7 @@
 | 贪心 | [greedy.md](topics/greedy.md) | 股票、区间、跳跃、前缀最优 |
 | 设计 | [design.md](topics/design.md) | LRU、哈希表+链表、数据结构组合 |
 | 并查集 | [union-find.md](topics/union-find.md) | 连通性、分组、合并查询 |
-| 链表 | [linked-list.md](topics/linked-list.md) | 虚拟头节点、尾插、删除节点、合并链表、分治归并、反转、区间反转、K 组反转、快慢指针、判环、入环点、相交链表 |
+| 链表 | [linked-list.md](topics/linked-list.md) | 虚拟头节点、尾插、删除节点、合并链表、分治归并、链表排序、反转、区间反转、K 组反转、快慢指针、判环、入环点、相交链表 |
 | 二叉树 | [binary-tree.md](topics/binary-tree.md) | BFS、DFS、前中后序遍历、层序遍历、右视图、递归、树形 DP、最大路径和、最近公共祖先 |
 | 图论 | [graph.md](topics/graph.md) | BFS、DFS、网格图、连通块 |
 

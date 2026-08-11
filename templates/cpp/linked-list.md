@@ -46,6 +46,39 @@ ListNode* mergeKLists(vector<ListNode*>& lists) {
 }
 ```
 
+## 链表归并排序
+
+适用：对单链表做 O(n log n) 排序。
+
+```cpp
+ListNode* splitMiddle(ListNode* head) {
+    ListNode* prev = head;
+    ListNode* slow = head;
+    ListNode* fast = head;
+
+    while (fast != nullptr && fast->next != nullptr) {
+        prev = slow;
+        slow = slow->next;
+        fast = fast->next->next;
+    }
+
+    prev->next = nullptr;
+    return slow;
+}
+
+ListNode* sortList(ListNode* head) {
+    if (head == nullptr || head->next == nullptr) {
+        return head;
+    }
+
+    ListNode* second = splitMiddle(head);
+    ListNode* left = sortList(head);
+    ListNode* right = sortList(second);
+
+    return mergeTwoLists(left, right);
+}
+```
+
 ## 虚拟头节点删除节点
 
 适用：删除链表节点，尤其是头节点也可能被删除的情况。
@@ -310,6 +343,8 @@ ListNode* getIntersectionNode(ListNode* headA, ListNode* headB) {
 - 尾插一个节点后，`tail` 必须移动到新尾部
 - 合并 K 个链表时，`step` 每轮翻倍，内层下标每次跳 `step * 2`
 - `lists` 为空时直接返回 `nullptr`
+- 链表归并排序中，找中点后必须断开前后两段
+- 排序链表递归出口要同时处理空链表和单节点链表
 - 改变 `cur->next` 前，如果还要继续遍历，先保存 `next`
 - 删除链表节点时，要先找到待删除节点的前驱
 - 删除倒数第 N 个节点时，快慢指针法中慢指针从虚拟头节点出发

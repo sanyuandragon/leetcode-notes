@@ -15,6 +15,7 @@
 - 删除节点：先找到待删除节点的前驱，再改 `next`
 - 尾指针：构建新链表或合并链表时，维护结果链表末尾
 - 分治归并：多个有序链表两两合并，逐轮扩大合并范围
+- 归并排序：快慢指针找中点断链，递归排序两半，再合并两个有序链表
 - 快慢指针：找中点、判断环、寻找入环点、寻找倒数第 k 个节点
 - 双指针切换链表：处理两个链表长度差，比如相交链表
 - 三指针反转：`prev`、`cur`、`next` 依次改边
@@ -32,6 +33,7 @@
 | 92 | [反转链表 II](../problems/0092-reverse-linked-list-ii.md) | 中等 | 虚拟头节点定位区间前驱，局部反转后重新接回链表 | `new` |
 | 141 | [环形链表](../problems/0141-linked-list-cycle.md) | 简单 | 快慢指针，快指针追上慢指针说明有环 | `new` |
 | 142 | [环形链表 II](../problems/0142-linked-list-cycle-ii.md) | 中等 | 哈希表找第一个重复节点；进阶用快慢指针相遇后定位入环点 | `new` |
+| 148 | [排序链表](../problems/0148-sort-list.md) | 中等 | 快慢指针找中点断链，递归归并排序，复用合并两个有序链表 | `new` |
 | 160 | [相交链表](../problems/0160-intersection-of-two-linked-lists.md) | 简单 | 两个指针分别走 A+B 和 B+A，在交点或空指针处相遇 | `new` |
 | 206 | [反转链表](../problems/0206-reverse-linked-list.md) | 简单 | 三指针原地反转，先保存后继再改 `next` | `new` |
 | - | - | - | - | - |
@@ -41,6 +43,7 @@
 - 合并两个有序链表：见 [linked-list.md](../templates/cpp/linked-list.md)
 - 删除倒数第 N 个节点：见 [linked-list.md](../templates/cpp/linked-list.md)
 - 合并 K 个升序链表：见 [linked-list.md](../templates/cpp/linked-list.md)
+- 链表归并排序：见 [linked-list.md](../templates/cpp/linked-list.md)
 - 快慢指针判环：见 [linked-list.md](../templates/cpp/linked-list.md)
 - 环形链表 II：见 [linked-list.md](../templates/cpp/linked-list.md)
 - 相交链表双指针：见 [linked-list.md](../templates/cpp/linked-list.md)
@@ -55,6 +58,7 @@
 - 改 `next` 指针前，必要时先保存后继节点
 - 尾插后尾指针必须前进
 - 合并 K 个链表时，顺序合并会重复扫描长链表，优先考虑分治或小根堆
+- 排序链表时，快慢指针找到中点后必须断链，否则递归不会收敛
 - 链表题要特别检查空链表、单节点链表和剩余链表
 - 快慢指针访问 `fast->next->next` 前，必须先判断 `fast` 和 `fast->next` 非空
 - 找入环点时要比较节点地址；哈希表解法存 `ListNode*`，不是节点值

@@ -62,6 +62,31 @@ for (int i = 0; i < n; ++i) {
 }
 ```
 
+## 下一个排列
+
+适用：原地求数组的下一个字典序排列。
+
+```cpp
+void nextPermutation(vector<int>& nums) {
+    int n = nums.size();
+    int i = n - 2;
+
+    while (i >= 0 && nums[i] >= nums[i + 1]) {
+        --i;
+    }
+
+    if (i >= 0) {
+        int j = n - 1;
+        while (nums[j] <= nums[i]) {
+            --j;
+        }
+        swap(nums[i], nums[j]);
+    }
+
+    reverse(nums.begin() + i + 1, nums.end());
+}
+```
+
 ## 快慢指针
 
 适用：原地删除、链表环、去重。
@@ -123,5 +148,6 @@ int trap(vector<int>& height) {
 - 对撞指针常用 `left < right`
 - 原地覆盖时，`slow` 通常表示下一个可写位置
 - 三数之和命中答案后，先移动 `left/right`，再跳过和旧值重复的元素
+- 下一个排列先找非递增后缀左侧的拐点，交换后一定要反转后缀
 - 接雨水中左右扫描不要越过最高柱；最高柱本身不接水
 - 当前位置能接水的高度由左右最高挡板的较小值决定
